@@ -25,7 +25,7 @@ The file list `s3_contentes.txt` will be used as a checklist, addings
 with a directory listing dating from October 2012.  To update the list
 use the output of 
 
-`./s3cmd ls --add-header="x-amz-request-payer: requester" s3://arxiv/src/'`
+`./s3cmd ls --add-header="x-amz-request-payer: requester" 's3://arxiv/src/'`
 
 ## bucket_downloader.py 
 
