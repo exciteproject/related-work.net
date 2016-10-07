@@ -17,14 +17,15 @@ s3tools.org and we included it here for convenience.
 Apart from the small patch we did not modify s3cmd at all. 
 CREDITS GO TO s3tools.org!
 
-You will have to run 's3cmd --configure' and enter yout amazon account
+You will have to run `s3cmd --configure` and enter yout amazon account
 details.
 
-The file list 's3_contentes.txt' will be used as a checklist, addings
+The file list `s3_contentes.txt` will be used as a checklist, addings
 '#' on all lines which we have started to dowload.  We filled the file
 with a directory listing dating from October 2012.  To update the list
-use the output of './s3cmd ls --add-header="x-amz-request-payer:
-requester" s3://arxiv/src/''
+use the output of 
+
+`./s3cmd ls --add-header="x-amz-request-payer: requester" s3://arxiv/src/'`
 
 ## bucket_downloader.py 
 
