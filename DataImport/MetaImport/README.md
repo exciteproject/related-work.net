@@ -2,12 +2,15 @@ These scripts manage the metadata import from arxiv.org
 
 ## Dependicies:
 
-* pyoai/lxml
+* pyoai
+* lxml
 
 Use
 
-  sudo apt-get install python-setuptools python-lxml 
-  sudo easy_install lxml pyoai
+```
+sudo apt-get install python-setuptools python-lxml 
+sudo easy_install lxml pyoai
+```
 
 for installation.
 
