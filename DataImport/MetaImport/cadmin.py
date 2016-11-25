@@ -1,14 +1,16 @@
-# Description:
+#
+# Celery Job Scheduler
+#
+# Remarks:
 # * Meta information is downloaded in chunks of delta=1 moths
 # * The arxiv meta repository starts with introduction of the new arxiv-id format in 2007.
 #   However, older articles are contained in the 2007-05 month.
 # * Arguments are parsed from the commandline. Only '--from' and '--to' are really important.
 #
-import argparse, os
-import json
+import argparse, os, json
 from datetime import date, datetime, timedelta
 
-import MetaImport.ctasks as tasks
+import capp as app
 
 #
 # MAIN PRORGRAM
@@ -58,7 +60,7 @@ def loop_months(start_date, end_date, month_step=1):
 def main():
     for (c_date,n_date) in loop_months(from_date, until_date, delta_months):
         print('Schedule fetch %s -- %s' % (c_date.strftime('%Y-%m-%d'), n_date.strftime('%Y-%m-%d')))
-        tasks.fetch_parse_store.apply_async(
+        app.fetch.apply_async(
             args=(c_date.strftime('%Y-%m-%d'), n_date.strftime('%Y-%m-%d')),
             retry=True,
             retry_policy={
