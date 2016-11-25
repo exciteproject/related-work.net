@@ -7,9 +7,9 @@
 #   However, older articles are contained in the 2007-05 month.
 # * Arguments are parsed from the commandline. Only '--from' and '--to' are really important.
 #
+
 import argparse, os, json
 from datetime import date, datetime, timedelta
-
 import capp as app
 
 #
@@ -60,15 +60,9 @@ def loop_months(start_date, end_date, month_step=1):
 def main():
     for (c_date,n_date) in loop_months(from_date, until_date, delta_months):
         print('Schedule fetch %s -- %s' % (c_date.strftime('%Y-%m-%d'), n_date.strftime('%Y-%m-%d')))
-        app.fetch.apply_async(
-            args=(c_date.strftime('%Y-%m-%d'), n_date.strftime('%Y-%m-%d')),
-            retry=True,
-            retry_policy={
-            'max_retries': 3,
-            'interval_start': 0,
-            'interval_step': 60*60, # wait 1h before next retry
-            'interval_max':  60*60, # max wait
-            })
+        app.fetch_arxiv_meta.apply_async(
+            args=(c_date.strftime('%Y-%m-%d'), n_date.strftime('%Y-%m-%d'))
+        )
 
 if __name__ == '__main__':
     main()
