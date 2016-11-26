@@ -12,3 +12,15 @@ jobs-clear-all:
 
 jobs-show-queue:
 	@echo 'LRANGE "celery\x06\x169" 0 -1' | redis-cli | jq '.headers | [.task, .argsrepr]' --compact-output -r
+
+pg-user-and-db:
+	psql -U postgres -c 'CREATE USER rw WITH PASSWORD "rw";'
+	sudo -U postgres -c 'CREATE DB rw;'
+	sudo -U postgres -c 'GRANT ALL ON DATABASE rw to rw;'
+
+pg-tables:
+	@# psql -U rw -c 'CREATE TABLE IF NOT EXISTS oa_results(key TEXT PRIMARY KEY, value JSON);'
+	@#psql -U rw -c 'CREATE TABLE IF NOT EXISTS meta(id VARCHAR(50) PRIMARY KEY, author TEXT, title TEXT, abstract TEXT, info TEXT, subject TEXT, year INTEGER);'
+
+pg-results:
+	psql -U rw -c 'SELECT key FROM oa_results;'
