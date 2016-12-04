@@ -5,27 +5,26 @@
 #                        (CC BY-SA 3.0) 2012 Heinrich Hartmann
 # 
 
+from __future__ import print_function
+from .RE_gz_extract  import gz_extract
+from .RE_tex_process import extract_bibitems, remove_tex_tags
 DEBUG = 0
 
-from RE_gz_extract  import gz_extract
-from RE_tex_process import extract_bibitems, remove_tex_tags
-
 def RefExtract(gz_path):
-    ID = get_arxiv_id_from_path(gz_path)
-    if DEBUG: print "# Processing ", ID
 
     # 1. Extract *.tex and *.bbl files from gz file
-    tex_string  = gz_extract(gz_path)
+    tex_string  = gz_extract(gz_path).decode('utf-8','ignore')
 
+    # print("Found LaTex Sources: {}".format(len(tex_string)))
+    
     # 2. Extract bib_items
-    bibitems    = extract_bibitems(tex_string)
+    bibitems = list(extract_bibitems(tex_string))
 
-    # 3. Strip remove tex-tags and write references to stdout
-    out = ''
-    for item in bibitems:
-        out += ID + '|' + remove_tex_tags(item) + '\n'
-
-    return out
+    bibitems = list(map(remove_tex_tags, bibitems))
+    
+    # print(bibitems)
+    
+    return bibitems
 
 def parse_arguments():
     global DEBUG
@@ -46,19 +45,6 @@ def parse_arguments():
 
     return gz_path
 
-def get_arxiv_id_from_path(gz_path):
-    '''
-    Typical gz_path:
-    * /media/buckets/Extracted/quant-ph0002087.gz
-    * /media/buckets/Extracted/1001.1234.gz
-    Returns:
-    * quant-ph0002087
-    * 1001.1234
-    '''
-
-    file_name = gz_path.split('/')[-1]
-    return file_name[:-3]
-
 
 if __name__ == '__main__':   
     import os, sys
@@ -70,7 +56,7 @@ if __name__ == '__main__':
 
     gz_path = parse_arguments()
     
-    print RefExtract(gz_path)
+    print(RefExtract(gz_path))
     
     try:
         pass

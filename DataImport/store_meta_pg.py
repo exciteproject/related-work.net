@@ -67,13 +67,16 @@ class store:
         n = len(self.q)
         self.cur.executemany(SQL_INSERT, self.q);
         self.con.commit()
+        self.q = [] # clear queue
         return self.cur.statusmessage
 
     def get(self, _id):
+        "Lookup a key in the db"
         self.cur.execute(SQL_GET, (_id,))
         return self.cur.fetchone()
 
     def delete(self, _id):
+        "Delete a key from the db"
         self.cur.execute(SQL_DELETE, (_id,))
         self.con.commit()
         return self.cur.statusmessage

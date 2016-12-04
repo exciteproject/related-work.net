@@ -23,7 +23,6 @@ RESUME = True
 def main():
     print 'Press "x" to break'
 
-
     if not os.path.exists(tmp_dir):
         os.mkdir(tmp_dir)
 
