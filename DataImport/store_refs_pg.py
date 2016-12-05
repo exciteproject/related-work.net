@@ -70,6 +70,9 @@ class store:
         self.con.commit()
         return self.cur.statusmessage
 
+    def close(self):
+        self.con.close()
+    
 if __name__ == "__main__":
     s = store(user="rw", database="rw")
     print(s.table_create())
@@ -78,3 +81,4 @@ if __name__ == "__main__":
     print(s.flush())
     print(s.get("test-id"))
     print(s.delete("test-id"))
+    print(s.close())

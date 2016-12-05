@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals, print_function
 import sys
+
 from celery import Celery
 
 def log(s):
@@ -20,8 +21,8 @@ app.conf.update(
     task_publish_retry_policy={
         'max_retries': 3,
         'interval_start': 0,
-        'interval_step': 60,
-        'interval_max':  5*60, # max wait
+        'interval_step':  60,
+        'interval_max':   5*60, # max wait
     },
     worker_concurrency = 1
 )
@@ -87,28 +88,34 @@ def run(command):
 
 ## Extract References
 from RefExtract import RefExtract
+from store_refs_pg import store as store_refs
+from celery.signals import celeryd_after_setup, worker_shutdown
+
+dst = False
+
+@celeryd_after_setup.connect
+def init_worker(**kwargs):
+    global dst
+    print('Initializing database connection for worker.')
+    dst = store_refs(user="rw",database="rw")
+
+@worker_shutdown.connect
+def shutdown_worker(**kwargs):
+    global dst
+    dst.close()
 
 @app.task
 def ref_extract(gz_name):
+    global dst
+    if not dst:
+        dst = store_refs(user="rw",database="rw")
     log("Extracting references from: " + gz_name)
-    dst = Path("/EXCITE/datasets/arxiv/refs2")
-    if not dst.exists():
-        dst.mkdir()
-    dstore = store_fs(str(dst))
-    key = Path(gz_name).name[:-3] # remove .gz
-    if False: # dstore.exists(key):
-        return "Done Already"
-    else:
-        refs = RefExtract(gz_name)
-        for ref in refs:
-            
-        if len(refs) > 0:
-            dstore.set(key, refs)
-            log("Stored {} references.".format(len(refs)))
-            return len(refs)
-        else:
-            log("No references found for.")
-            return 0
+    meta_id = Path(gz_name).name[:-3] # remove .gz
+    refs = RefExtract(gz_name)
+    for ref in refs:
+        dst.queue_ref(meta_id, ref)
+    dst.flush()
+    log("Wrote {} references".format(len(refs)))
             
 def schedule_ref_extract():
     src = "/EXCITE/datasets/arxiv/paper"
