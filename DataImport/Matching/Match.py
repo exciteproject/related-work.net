@@ -26,7 +26,7 @@ from unicodedata import normalize
 
 # Akward shared import
 sys.path.append('../tools')
-from shared import to_ascii
+# from shared import to_ascii
 
 # Init global variables
 DEBUG = 0
@@ -52,15 +52,15 @@ def Match(rec):
     Remark:
     * The fist call initializes a author lookup table which takes a few seconds to load.
     """
-    if DEBUG: print "### Matchig ", rec
+    if DEBUG: print("### Matchig ", rec)
     if not 'author_dict' in dir(Match):
         Match.author_dict = get_author_count_dict(limit = -1)
     
     # 1. Try to find an arxiv id in rec-string.
     arxiv_id = guess_arxiv_id(rec)
     if arxiv_id:
-        if DEBUG: print "* found arxiv_id :", arxiv_id
-        if DEBUG: print "* Matched:       :", ', '.join(get_meta_record_by_id(arxiv_id)[:3])
+        if DEBUG: print("* found arxiv_id :", arxiv_id)
+        if DEBUG: print("* Matched:       :", ', '.join(get_meta_record_by_id(arxiv_id)[:3]))
         return arxiv_id
 
     # 2. Try to get author name and year
@@ -68,15 +68,15 @@ def Match(rec):
     authors = guess_authors(rec, limit = 1)
 
     if (year is None) or (authors == []):
-        if DEBUG: print "* SKIPPED do not have year (%s) and author (%s)" % (year, ', '.join(authors))
+        if DEBUG: print("* SKIPPED do not have year (%s) and author (%s)" % (year, ', '.join(authors)))
         return
 
     # found author and year both?
-    if DEBUG: print "* year           :",year
-    if DEBUG: print "* authors        :",authors
+    if DEBUG: print("* year           :", year)
+    if DEBUG: print("* authors        :", authors)
 
     if year < 1990:
-        if DEBUG: print "* SKIPPED by year"
+        if DEBUG: print("* SKIPPED by year")
         # Remark: The arxiv exisits since 1991
         return
 
@@ -85,19 +85,20 @@ def Match(rec):
     # Lookup papers in db:
     x_records=get_it_by_ay(main_author,year)
 
-    if DEBUG: print "* matches in db  :", len(x_records)
-    if DEBUG: print "* ratios         :", [ "%s...: %.3f" % (x_title[:10], match_p(x_title,rec)) for x_id, x_title in x_records]
+    if DEBUG: print("* matches in db  :", len(x_records))
+    if DEBUG: print("* ratios         :",
+                    ["%s...: %.3f" % (x_title[:10], match_p(x_title, rec)) for x_id, x_title in x_records])
 
     for x_id,x_title in x_records:
         # Is x_title and rec similar? Test using match_p
         if match_p(x_title,rec) > .7:
-            if DEBUG: print "* MATCHED        :", x_id, x_title, "\n"
+            if DEBUG: print("* MATCHED        :", x_id, x_title, "\n")
             return x_id
 
     # No match found, yet:
     # Sometimes not Title is given. Check for all authors, then?
     # e.g. C. Fuchs and H. H. Wolter, Eur. Phys. J. A  30 , 5 (2006).
-    if DEBUG: print "* NO MATCH FOUND!"
+    if DEBUG: print("* NO MATCH FOUND!")
 
 
 def match_p(s1,s2):

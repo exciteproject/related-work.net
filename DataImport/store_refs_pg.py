@@ -24,7 +24,7 @@ ON CONFLICT DO NOTHING;
 """
 
 SQL_GET = """
-SELECT * FROM refs WHERE meta_id = %s;
+SELECT * FROM refs WHERE meta_id = %s
 """
 
 SQL_DELETE = """
