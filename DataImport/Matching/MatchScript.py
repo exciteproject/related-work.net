@@ -8,7 +8,8 @@ from multiprocessing import Pool
 import argparse, sys, os, re
 
 sys.path.append('../tools')
-from shared import yield_lines_from_dir, yield_lines_from_file
+#from shared import yield_lines_from_dir, yield_lines_from_file
+#solve this
 
 DEBUG = 0
 LOG = sys.stderr
@@ -39,8 +40,9 @@ def main():
     ref_file = args.reffile
     match_file = args.matchfile
     num_proc = args.m
-    print """\n\nReading reference strings from {0}.\nMatching using {1} parallel processes.\nWriting to {1}.\n""".format(
-        ref_file, match_file, num_proc)
+    print(
+        """\n\nReading reference strings from {0}.\nMatching using {1} parallel processes.\nWriting to {1}.\n""".format(
+            ref_file, match_file, num_proc))
 
     #
     # Execute program
