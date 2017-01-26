@@ -46,7 +46,7 @@ class store:
 
     def queue_match(self, ref_id, meta_id):
         "Queue data for insertion"
-        self.q.append([meta_id, ref])
+        self.q.append([ref_id, meta_id])
 
     def flush(self):
         "Write out queue to DB"
