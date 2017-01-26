@@ -82,7 +82,7 @@ def get_match(meta_id,line):
 
     # cleanup
     # rec = rec.strip()
-    ID = repair_arxiv_id(meta_id)
+    # ID = repair_arxiv_id(meta_id)
 
     # Match
     match = Match(line)
