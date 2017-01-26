@@ -49,29 +49,29 @@ def main():
     #
 
     # Get input line iterator from different sources
-    if args.stream:
-        in_iter = sys.stdin
-    elif os.path.isfile(ref_file):
-        in_iter = yield_lines_from_file(ref_file)
-    elif os.path.isdir(ref_file):
-        in_iter = yield_lines_from_dir(ref_file,'.txt')
-    else:
-        raise IOError('File not found: '+ ref_file)
+    # if args.stream:
+    #     in_iter = sys.stdin
+    # elif os.path.isfile(ref_file):
+    #     in_iter = yield_lines_from_file(ref_file)
+    # elif os.path.isdir(ref_file):
+    #     in_iter = yield_lines_from_dir(ref_file,'.txt')
+    # else:
+    #     raise IOError('File not found: '+ ref_file)
 
 
-    if num_proc >= 1:
-        p=Pool(num_proc)
-        out_iter = p.imap_unordered(get_match,in_iter,chunksize=100)
-    else:
-        out_iter = get_match(in_iter)
+    # if num_proc >= 1:
+    #     p=Pool(num_proc)
+    #     out_iter = p.imap_unordered(get_match,in_iter,chunksize=100)
+    # else:
+    #     out_iter = get_match(in_iter)
 
 
-    with open(match_file,'w') as out_fh:
-        for i, line in enumerate(out_iter):
-            if i % 1000 == 0:
-                LOG.write( 'Matching line %d \n' % i )
-
-            out_fh.write(line + "\n")
+    # with open(match_file,'w') as out_fh:
+    #     for i, line in enumerate(out_iter):
+    #         if i % 1000 == 0:
+    #             LOG.write( 'Matching line %d \n' % i )
+    #
+    #         out_fh.write(line + "\n")
 
 
 def get_match(line):

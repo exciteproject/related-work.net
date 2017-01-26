@@ -31,3 +31,6 @@ RelatedWorkBrowserGwtp/*
 RelatedWork/war/relatedwork/*
 */DATA/
 *.log
+
+.idea
+excite
