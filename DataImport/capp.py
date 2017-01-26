@@ -156,4 +156,5 @@ if __name__ == "__main__":
     # insert_arxiv_meta_bucket("2012-04-01:2012-05-01")
     # schedule_bucket_extract()
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
-    schedule_ref_extract()
+    # schedule_ref_extract()
+    schedule_ref_matching()
