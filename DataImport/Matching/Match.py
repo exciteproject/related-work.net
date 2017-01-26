@@ -59,7 +59,7 @@ def Match(rec):
     """
     if DEBUG: print("### Matchig ", rec)
     if not 'author_dict' in dir(Match):
-        Match.author_dict = get_author_count_dict(limit = -1)
+        Match.author_dict = get_author_count_dict(limit = "ALL")
     
     # 1. Try to find an arxiv id in rec-string.
     arxiv_id = guess_arxiv_id(rec)

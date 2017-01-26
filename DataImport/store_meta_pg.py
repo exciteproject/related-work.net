@@ -43,7 +43,7 @@ AND '%d' <= year AND year <= '%d'
 """
 
 SQL_AUTHOR_COUNT = """
-SELECT author FROM meta LIMIT '%d'
+SELECT author FROM meta LIMIT %s
 """
 
 class store:
@@ -96,7 +96,10 @@ class store:
         return self.cur.fetchall()
 
     def get_author_count(self,limit):
-        self.cur.execute(SQL_AUTHOR_COUNT, (limit,))
+        if limit == "ALL":
+            self.cur.execute("SELECT author FROM meta")
+        else:
+            self.cur.execute(SQL_AUTHOR_COUNT, (limit,))
         return self.cur.fetchall()
 
 if __name__ == "__main__":
