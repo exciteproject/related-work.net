@@ -130,17 +130,18 @@ def schedule_ref_extract():
 
 # Reference matching
 from store_matches_pg import store as store_matches
-from Matching.MatchScript import get_match
+from Matching.MatchScript import Match
 
 @app.task
 def ref_matching(meta_id,ref_text,ref_id):
     global mst
     if not mst:
         mst = store_matches(user="rw",database="rw")
-    match = get_match(meta_id,ref_text)
+    match = Match(ref_text)
     if match:
         mst.queue_match(ref_id, match)
         if len(mst.q) % 1000 == 0:
+            print("DB flush - matches")
             mst.flush()
 
 
