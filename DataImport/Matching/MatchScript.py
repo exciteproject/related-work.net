@@ -3,7 +3,7 @@
 # Executable version of Match.py
 #
 
-from Match import Match
+from Matching.Match import Match
 from multiprocessing import Pool
 import argparse, sys, os, re
 from store_refs_pg import store as store_refs

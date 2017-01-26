@@ -35,7 +35,7 @@ DELETE FROM refs WHERE meta_id = %s;
 class store:
     def __init__(self, **kwargs):
         self.con = psycopg2.connect(**kwargs)
-        self.cur = self.con.cursor()
+        self.cur = self.con.cursor('server-cursor')
         self.q   = [] # fresh list
 
     def table_create(self):
@@ -65,6 +65,10 @@ class store:
         self.cur.execute(SQL_GET, (meta_id,))
         return self.cur.fetchall()
 
+    def get_all_references(self):
+        self.cur.execute("SELECT * FROM refs")
+        yield self.cur
+
     def delete(self, meta_id):
         "Delete all references of a paper in the db"
         self.cur.execute(SQL_DELETE, (meta_id,))
@@ -73,7 +77,8 @@ class store:
 
     def close(self):
         self.con.close()
-    
+
+
 if __name__ == "__main__":
     s = store(user="rw", database="rw")
     print(s.table_create())
