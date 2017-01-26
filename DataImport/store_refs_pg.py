@@ -67,7 +67,7 @@ class store:
 
     def get_all_references(self):
         self.cur.execute("SELECT * FROM refs")
-        yield self.cur
+        return self.cur
 
     def delete(self, meta_id):
         "Delete all references of a paper in the db"

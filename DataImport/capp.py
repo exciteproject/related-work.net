@@ -34,6 +34,7 @@ app.conf.update(
 # Download Arxiv Metadata
 from MetaImport import fetch as _fetch
 from store_fs import store as store_fs
+
 @app.task
 def fetch_arxiv_meta(*args):
     s = store("/EXCITE/datasets/arxiv/meta/")
@@ -91,7 +92,7 @@ from RefExtract import RefExtract
 from store_refs_pg import store as store_refs
 from celery.signals import celeryd_after_setup, worker_shutdown
 
-dst = False
+dst, mst = False, False
 
 @celeryd_after_setup.connect
 def init_worker(**kwargs):
@@ -127,9 +128,20 @@ def schedule_ref_extract():
         ref_extract.delay(name)
 
 
+# Reference matching
+from store_matches_pg import store as store_matches
+from Matching.MatchScript import get_match
+
 @app.task
-def ref_matching(id, text):
-    pass
+def ref_matching(ref_id, ref_text):
+    global mst
+    if not mst:
+        mst = store_matches(user="rw",database="rw")
+    match = get_match(ref_text)
+    if match:
+        mst.queue_match(ref_id, match)
+        if len(mst.q) % 1000 == 0:
+            mst.flush()
 
 
 def schedule_ref_matching():
