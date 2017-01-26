@@ -43,7 +43,7 @@ AND '%d' <= year AND year <= '%d'
 """
 
 SQL_AUTHOR_COUNT = """
-SELECT author FROM meta LIMIT %d
+SELECT author FROM meta LIMIT '%d'
 """
 
 class store:
