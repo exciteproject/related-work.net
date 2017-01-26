@@ -22,8 +22,8 @@ def main():
     # Parse commandline arguments
     #
     
-    ref_file = "../DATA/ALL_REF.txt"
-    match_file = "../DATA/ALL_MATCH.txt"
+    #ref_file = "../DATA/ALL_REF.txt"
+    #match_file = "../DATA/ALL_MATCH.txt"
 
     # Setup Parser
     parser = argparse.ArgumentParser()

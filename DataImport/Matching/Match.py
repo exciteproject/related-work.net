@@ -19,10 +19,11 @@
 #
 
 import sys,re, os, time, pickle
-import sqlite3 as lite
+# import sqlite3 as lite
 from time import sleep
 from collections import defaultdict
 from unicodedata import normalize
+
 
 # Akward shared import
 sys.path.append('../tools')
@@ -30,7 +31,7 @@ sys.path.append('../tools')
 
 # Init global variables
 DEBUG = 0
-meta_db = '../DATA/META/arxiv_meta.db'
+# meta_db = '../DATA/META/arxiv_meta.db'
 
 
 #
