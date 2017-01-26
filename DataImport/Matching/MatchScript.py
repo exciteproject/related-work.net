@@ -85,11 +85,14 @@ def get_match(meta_id,line):
     # ID = repair_arxiv_id(meta_id)
 
     # Match
+    print("before MATCH()")
     match = Match(line)
-
+    print(match)
     if match:
+        print("usa u if")
         return match
     else:
+
         return None
             
     # if match:
