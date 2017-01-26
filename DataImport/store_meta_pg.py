@@ -36,6 +36,16 @@ SQL_DELETE = """
 DELETE FROM meta WHERE id = %s;
 """
 
+SQL_SELECT_BY_AUTHOR_YEAR ="""
+SELECT id, title FROM meta
+WHERE author='%s'
+AND '%d' <= year AND year <= '%d'
+"""
+
+SQL_AUTHOR_COUNT = """
+SELECT author FROM meta LIMIT %d
+"""
+
 class store:
     def __init__(self, **kwargs):
         self.con = psycopg2.connect(**kwargs)
@@ -80,6 +90,14 @@ class store:
         self.cur.execute(SQL_DELETE, (_id,))
         self.con.commit()
         return self.cur.statusmessage
+
+    def get_by_author_and_year(self, author, year, delta):
+        self.cur.execute(SQL_SELECT_BY_AUTHOR_YEAR, (author,year-delta,year))
+        return self.cur.fetchall()
+
+    def get_author_count(self,limit):
+        self.cur.execute(SQL_AUTHOR_COUNT, (limit))
+        return self.cur.fetchall()
 
 if __name__ == "__main__":
     import json

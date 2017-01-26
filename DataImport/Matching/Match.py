@@ -24,6 +24,10 @@ from time import sleep
 from collections import defaultdict
 from unicodedata import normalize
 
+from blaze.expr.reductions import count
+
+import store_matches_pg
+import store_meta_pg
 
 # Akward shared import
 sys.path.append('../tools')
@@ -263,12 +267,14 @@ def get_meta_record_by_id(arxiv_id):
     Lookup arxiv_id in meta_db
     """
 
-    con = lite.connect(meta_db)
-    tokens = defaultdict(int)
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM meta WHERE arxiv_id = '%s'" % arxiv_id)
-        rec = cur.fetchone()
+    # con = lite.connect(meta_db)
+    # tokens = defaultdict(int)
+    # with con:
+    #     cur = con.cursor()
+    #     cur.execute("SELECT * FROM meta WHERE arxiv_id = '%s'" % arxiv_id)
+    #     rec = cur.fetchone()
+    s = store_meta_pg.store(user="rw", database="rw")
+    rec = s.get(arxiv_id)
     return rec    
 
 
@@ -276,13 +282,15 @@ def get_it_by_ay(author,year, delta=2):
     """
     Get arxiv_id (i) and title (t) of all papers from author (a) in in year (y) + [-delta..0]
     """
-    con = lite.connect(meta_db)
-
-    recs = []
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT arxiv_id, title FROM ayit_lookup WHERE author='%s' AND '%d' <= year AND year <= '%d' " % (author,year-delta,year))
-        recs = [ (to_ascii(x_id), to_ascii(x_title)) for x_id,x_title in cur.fetchall()]
+    # con = lite.connect(meta_db)
+    #
+    # recs = []
+    # with con:
+    #     cur = con.cursor()
+    #     cur.execute("SELECT arxiv_id, title FROM ayit_lookup WHERE author='%s' AND '%d' <= year AND year <= '%d' " % (author,year-delta,year))
+    #     recs = [ (to_ascii(x_id), to_ascii(x_title)) for x_id,x_title in cur.fetchall()]
+    s = store_meta_pg.store(user="rw", database="rw")
+    recs = s.get_by_author_and_year(author, year, delta)
     return recs
 
 
@@ -292,14 +300,15 @@ def get_author_count_dict(limit=1000):
     """
     author_count = defaultdict(int)
 
-    con = lite.connect(meta_db)
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT author FROM ayit_lookup LIMIT %d" % limit)
-        
-        for author in cur.fetchall():
-            author_count[to_ascii(author[0])] += 1
-
+    # con = lite.connect(meta_db)
+    # with con:
+    #     cur = con.cursor()
+    #     cur.execute("SELECT author FROM ayit_lookup LIMIT %d" % limit)
+    #
+    s = store_meta_pg.store(user="rw", database="rw")
+    a_count = s.get_author_count(limit)
+    for author in count:
+        author_count[author[0]] += 1
     return author_count
 
 
