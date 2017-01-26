@@ -38,8 +38,8 @@ DELETE FROM meta WHERE id = %s;
 
 SQL_SELECT_BY_AUTHOR_YEAR ="""
 SELECT id, title FROM meta
-WHERE author='%s'
-AND '%d' <= year AND year <= '%d'
+WHERE author=%s
+AND %s <= year AND year <= %s
 """
 
 SQL_AUTHOR_COUNT = """
