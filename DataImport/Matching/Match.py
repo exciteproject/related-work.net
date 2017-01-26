@@ -24,7 +24,7 @@ from time import sleep
 from collections import defaultdict
 from unicodedata import normalize
 
-from blaze.expr.reductions import count
+# from blaze.expr.reductions import count
 
 import store_matches_pg
 import store_meta_pg
@@ -307,7 +307,7 @@ def get_author_count_dict(limit=1000):
     #
     s = store_meta_pg.store(user="rw", database="rw")
     a_count = s.get_author_count(limit)
-    for author in count:
+    for author in a_count:
         author_count[author[0]] += 1
     return author_count
 
