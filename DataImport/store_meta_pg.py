@@ -92,11 +92,11 @@ class store:
         return self.cur.statusmessage
 
     def get_by_author_and_year(self, author, year, delta):
-        self.cur.execute(SQL_SELECT_BY_AUTHOR_YEAR, (author,year-delta,year))
+        self.cur.execute(SQL_SELECT_BY_AUTHOR_YEAR, (author, year-delta, year))
         return self.cur.fetchall()
 
     def get_author_count(self,limit):
-        self.cur.execute(SQL_AUTHOR_COUNT, (limit))
+        self.cur.execute(SQL_AUTHOR_COUNT, (limit,))
         return self.cur.fetchall()
 
 if __name__ == "__main__":

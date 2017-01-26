@@ -6,6 +6,8 @@
 from Match import Match
 from multiprocessing import Pool
 import argparse, sys, os, re
+from store_refs_pg import store as store_refs
+from store_matches_pg import store as store_matches
 
 sys.path.append('../tools')
 #from shared import yield_lines_from_dir, yield_lines_from_file
@@ -13,7 +15,6 @@ sys.path.append('../tools')
 
 DEBUG = 0
 LOG = sys.stderr
-
 
 
 def main():
@@ -27,8 +28,8 @@ def main():
 
     # Setup Parser
     parser = argparse.ArgumentParser()
-    parser.add_argument('reffile', nargs='?', help = 'path to text file/text dir containing references', type=str, default=ref_file)
-    parser.add_argument('matchfile', nargs='?', help = 'write output here', type=str, default=match_file)
+    parser.add_argument('ref_table', nargs='?', help = 'path to text file/text dir containing references', type=str, default='refs')
+    parser.add_argument('match_table', nargs='?', help = 'write output here', type=str, default='matches')
     parser.add_argument('--stream', help = 'read input from stdin', action="store_true", default=False)
     parser.add_argument('-m', help = 'number of parallel processes', type=int, default=1)
     parser.add_argument('-v','--verbose', help = 'Give detailed status information',type=int)
@@ -37,41 +38,41 @@ def main():
     if args.verbose:
         DEBUG = 1
 
-    ref_file = args.reffile
-    match_file = args.matchfile
+    ref_table = args.ref_table
+    match_table = args.match_table
     num_proc = args.m
     print(
         """\n\nReading reference strings from {0}.\nMatching using {1} parallel processes.\nWriting to {1}.\n""".format(
-            ref_file, match_file, num_proc))
+            ref_table, match_table, num_proc))
 
     #
     # Execute program
     #
 
-    # Get input line iterator from different sources
-    # if args.stream:
-    #     in_iter = sys.stdin
-    # elif os.path.isfile(ref_file):
-    #     in_iter = yield_lines_from_file(ref_file)
-    # elif os.path.isdir(ref_file):
-    #     in_iter = yield_lines_from_dir(ref_file,'.txt')
-    # else:
-    #     raise IOError('File not found: '+ ref_file)
+    Get input line iterator from different sources
+    if args.stream:
+        in_iter = sys.stdin
+    elif os.path.isfile(ref_file):
+        in_iter = yield_lines_from_file(ref_file)
+    elif os.path.isdir(ref_file):
+        in_iter = yield_lines_from_dir(ref_file,'.txt')
+    else:
+        raise IOError('File not found: '+ ref_file)
 
 
-    # if num_proc >= 1:
-    #     p=Pool(num_proc)
-    #     out_iter = p.imap_unordered(get_match,in_iter,chunksize=100)
-    # else:
-    #     out_iter = get_match(in_iter)
+    if num_proc >= 1:
+        p=Pool(num_proc)
+        out_iter = p.imap_unordered(get_match,in_iter,chunksize=100)
+    else:
+        out_iter = get_match(in_iter)
 
 
-    # with open(match_file,'w') as out_fh:
-    #     for i, line in enumerate(out_iter):
-    #         if i % 1000 == 0:
-    #             LOG.write( 'Matching line %d \n' % i )
-    #
-    #         out_fh.write(line + "\n")
+    with open(match_file,'w') as out_fh:
+        for i, line in enumerate(out_iter):
+            if i % 1000 == 0:
+                LOG.write( 'Matching line %d \n' % i )
+
+            out_fh.write(line + "\n")
 
 
 def get_match(line):
