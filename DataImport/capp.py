@@ -126,6 +126,18 @@ def schedule_ref_extract():
         log("Scheduling ref extraction: " + name)
         ref_extract.delay(name)
 
+
+@app.task
+def ref_matching():
+    pass
+
+
+def schedule_ref_matching():
+    refs = store_refs(user="rw", database="rw")
+    for reference in refs.get_all_references():
+        ref_matching.delay(reference)
+
+
 if __name__ == "__main__":
     # print(fetch_arxiv_meta("2016-01-10","2016-01-11"))
     # print(fetch_arxiv_meta.delay("2016-01-10","2016-01-12"))

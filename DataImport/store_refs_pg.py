@@ -65,6 +65,9 @@ class store:
         self.cur.execute(SQL_GET, (meta_id,))
         return self.cur.fetchall()
 
+    def get_all_references(self):
+        yield self.cur.execute("SELECT * FROM refs")
+
     def delete(self, meta_id):
         "Delete all references of a paper in the db"
         self.cur.execute(SQL_DELETE, (meta_id,))
@@ -73,7 +76,8 @@ class store:
 
     def close(self):
         self.con.close()
-    
+
+
 if __name__ == "__main__":
     s = store(user="rw", database="rw")
     print(s.table_create())
