@@ -133,11 +133,11 @@ from store_matches_pg import store as store_matches
 from Matching.MatchScript import get_match
 
 @app.task
-def ref_matching(ref_id, ref_text):
+def ref_matching(meta_id,ref_text,ref_id):
     global mst
     if not mst:
         mst = store_matches(user="rw",database="rw")
-    match = get_match(ref_text)
+    match = get_match(meta_id,ref_text)
     if match:
         mst.queue_match(ref_id, match)
         if len(mst.q) % 1000 == 0:
@@ -147,7 +147,7 @@ def ref_matching(ref_id, ref_text):
 def schedule_ref_matching():
     refs = store_refs(user="rw", database="rw")
     for reference in refs.get_all_references():
-        ref_matching.delay(reference[0], reference[1])
+        ref_matching.delay(reference[0], reference[1], reference[2])
 
 
 if __name__ == "__main__":

@@ -75,22 +75,22 @@ def main():
     #         out_fh.write(line + "\n")
 
 
-def get_match(line):
+def get_match(meta_id,line):
     # Example record:
     # line = '1001.0056|K. Behrend [ .... ] .  128 (1997), 45--88.\n'
-    ID, rec = line.split('|')[:2]
+    # ID, rec = line.split('|')[:2]
 
     # cleanup
-    rec = rec.strip()
-    ID = repair_arxiv_id(ID)
+    # rec = rec.strip()
+    ID = repair_arxiv_id(meta_id)
 
     # Match
-    match = Match(rec)
+    match = Match(line)
 
     if match:
         return match
     else:
-        pass
+        return None
             
     # if match:
     #     return  ID + "|" + rec + "|" + match
