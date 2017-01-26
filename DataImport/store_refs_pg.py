@@ -8,6 +8,7 @@ import psycopg2
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS refs (
+  id VARCHAR(50) PRIMARY KEY,
   meta_id VARCHAR(50),
   ref TEXT
 );
