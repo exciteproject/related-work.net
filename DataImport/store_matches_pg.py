@@ -4,8 +4,9 @@ import psycopg2
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS matches (
-  ref_id VARCHAR(50) CONSTRAINT ref_id PRIMARY KEY,
-  meta_id VARCHAR(50)
+  ref_id VARCHAR(50),
+  meta_id VARCHAR(50),
+  CONSTRAINT ref_unique UNIQUE(ref_id)
 );
 """
 
