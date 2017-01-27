@@ -146,14 +146,10 @@ def ref_matching(meta_id,ref_text,ref_id):
 
 
 def schedule_ref_matching():
-    counter = 0
     refs = store_refs(user="rw", database="rw")
     for reference in refs.get_all_references():
-        if counter < 50000:
-            ref_matching.delay(reference[0], reference[1], reference[2])
-            counter = counter+1
-        else:
-            break
+        ref_matching.delay(reference[0], reference[1], reference[2])
+
 
 
 if __name__ == "__main__":
