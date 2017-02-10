@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS matches (
 """
 
 SQL_INDEX = """
-CREATE INDEX IF NOT EXISTS ON matches (target_meta_id);
-CREATE INDEX IF NOT EXISTS ON matches (source_meta_id);
+CREATE INDEX IF NOT EXISTS matches_meta_id_idx ON matches (target_meta_id);
+CREATE INDEX IF NOT EXISTS matches_source_meta_id_idx ON matches (source_meta_id);
 """
 
 SQL_DROP = """
