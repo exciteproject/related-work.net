@@ -132,6 +132,7 @@ def schedule_ref_extract():
 from store_matches_pg import store as store_matches
 from Matching.MatchScript import Match
 
+
 @app.task
 def ref_matching(meta_id,ref_text,ref_id):
     global mst
@@ -139,7 +140,7 @@ def ref_matching(meta_id,ref_text,ref_id):
         mst = store_matches(user="rw",database="rw")
     match = Match(ref_text)
     if match:
-        mst.queue_match(ref_id, match)
+        mst.queue_match(ref_id, match, meta_id)
         if len(mst.q) % 1000 == 0:
             print("DB flush - matches")
             mst.flush()
@@ -151,7 +152,7 @@ def schedule_ref_matching():
     for reference in refs.get_all_references():
         if counter < 50000:
             ref_matching.delay(reference[0], reference[1], reference[2])
-            counter = counter+1
+            counter += 1
         else:
             break
 
