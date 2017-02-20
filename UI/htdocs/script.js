@@ -1,4 +1,5 @@
 function loadid(id) {
+    $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
     $.get("/meta/" + id, function(data, status){
         var rec = data[0];
         $("#meta_id").text(rec['meta_id']);
@@ -32,8 +33,9 @@ function loadid(id) {
     });
 }
 function loadev(ev) {
-    window.history.pushState('Page', 'Title', '/#' + ev.data);
-    loadid(ev.data);
+    var meta_id = ev.data;
+    window.history.pushState('Page', 'Title', '/#' + meta_id);
+    loadid(meta_id);
 }
 $(document).ready(function(){
     loadid(window.location.hash.substring(1) || "1305.2467");
