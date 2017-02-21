@@ -3,8 +3,8 @@ function loadid(id) {
     $.get("/meta/" + id, function(data, status){
         var rec = data[0];
         $("#meta_id").text(rec['meta_id']);
-        $("#title").text(rec['title']);
-        $("#author").text(rec['author']);
+        $(".title").text(rec['title']);
+        $(".author").text(rec['author']);
         $("#p_abstract").text(rec['abstract']);
     });
     $.get("/references/" + id, function(data, status){

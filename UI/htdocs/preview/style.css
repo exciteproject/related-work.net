@@ -55,13 +55,14 @@ h2.abstract {
     line-height: 100%;
 }
 
-#meta {
+.meta tbody {
+    vertical-align: top;
 }
 
 .references {
-    line-height: 130%;
+    line-height: 120%;
     text-align:left;
-    float:left; 
+    float:left;
     width:100%;
 } 
 
@@ -71,8 +72,8 @@ h2.abstract {
 .references ol {
     margin: 0;
 }
-.references ul li {
-    margin-top: 5;
+.references li {
+    margin-top: 10px;
 }
 
 .grid {
@@ -95,6 +96,10 @@ div#header {
     background-color: #EEEEEE;
     height: 53px;
     top:0px;left:0px;right:0px;
+    /* force text on one line */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 div#body {
     top:53px;
@@ -121,10 +126,14 @@ div#leftwrap {
 }
 
 #preview {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: 99%;
+    height: 100%;
     margin: 0;
     padding: 0;
+    border: 0;
 }
 
 #hleft {
