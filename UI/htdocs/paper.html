@@ -1,58 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html class=".grid">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Related-Work.net</title>
-    <link rel="stylesheet" type="text/css" href="/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="/style_paper.css"></link>
     <script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/script.js"></script>
-    <style>
-#body {
-    width: 40%;
-    float: left;
-padding: 0 50px;
-margin: 0;
-}
-
-#preview {
-    float: left;
-    width: 40%;
-height: 1000px;
-margin: 0;
-}
-    </style>
   </head>
-  <body>
-    <div id='headder'>
+  <body class=".grid">
+    <div id="header" class="grid">
       <h1 style='display:inline'> <a href='/'>Related-Work.net</a> </h1>
       <h2 style='display:inline'> > arxiv > <a href='#' id='meta_id'> </a> </h2>
-      <div style='display:inline; float:right; line-height:100%;'>
-        <form action="/search" method="get" style='margin:5 0 0 0'>
-          <inpput name="q" type="text" size="20"></input>
-          <input type="submit" value="search"></input>
-        </form>
-      </div>
     </div>
-    <div id="body">
-      <div id="meta">
-        <h1 id="title"></h1>
-        <h2 id="author"></h2>
-        <div id="abstract">
-          <h2 class="abstract">Abstract:</h2>
-          <p id="p_abstract"></p>
+    <div id="body" class="grid">
+      <div id="left" class="grid">
+        <div id="leftwrap">
+        <div id="meta">
+          <h1 id="title"></h1>
+          <h2 id="author"></h2>
+          <div id="abstract">
+            <h2 class="abstract">Abstract:</h2>
+            <p id="p_abstract"></p>
+          </div>
+        </div>
+        <div class="references">
+          <h2>Cited by</h2>
+          <ul id="ul_citations">
+          </ul>
+        </div>
+        <div class="references">
+          <h2>References</h2>
+          <ol id="ul_references">
+          </ol>
+        </div>
         </div>
       </div>
-      <div class="references">
-        <h2>Cited by</h2>
-        <ul id="ul_citations">
-        </ul>
-      </div>
-      <div class="references">
-        <h2>References</h2>
-        <ul id="ul_references">
-        </ul>
+      <div id="right" class="grid">
+        <iframe id="preview"></iframe>
       </div>
     </div>
-    <iframe id="preview"></iframe>
-</body>
+  </body>
 </html>
