@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html class=".grid">
   <head>
+    <script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Related-Work.net</title>
-    <link rel="stylesheet" type="text/css" href="/style_paper.css"></link>
-    <script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"></link>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body class=".grid">
     <div id="header" class="grid">
-      <h1 style='display:inline'> <a href='/'>Related-Work.net</a> </h1>
-      <h2 style='display:inline'> > arxiv > <a href='#' id='meta_id'> </a> </h2>
+      <div id="hleft">
+        <h1> <a href='/'>Related-Work.net</a> </h1>
+      </div>
+      <div id="hright">
+        <span id="meta_id"></span> :: <span id="author"></span>
+        <br> <span id="title"></span>
+      </div>
     </div>
     <div id="body" class="grid">
       <div id="left" class="grid">
         <div id="leftwrap">
-        <div id="meta">
-          <h1 id="title"></h1>
-          <h2 id="author"></h2>
-          <div id="abstract">
-            <h2 class="abstract">Abstract:</h2>
-            <p id="p_abstract"></p>
-          </div>
-        </div>
         <div class="references">
           <h2>Cited by</h2>
           <ul id="ul_citations">

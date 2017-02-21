@@ -1,18 +1,36 @@
+/* 
+   Use sane box model:
+   http://learnlayout.com/box-sizing.html 
+*/
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
 html {
     height: 100%;
+
 }
+
 body {
     height: 100%;
+    font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
+
+    font-size: 90%;
     margin: 0;
     padding: 0;
-    font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
-    font-size: 90%;
 }
 
-a:link { color:#000070; text-decoration:none; }
-a:hover { text-decoration:underline; }
-a:visited { color:#551A8B; text-decoration:none; }
-
+a:link {
+    color:#000070; text-decoration:none;
+}
+a:hover {
+    text-decoration:underline;
+}
+a:visited {
+    color:#551A8B; text-decoration:none;
+}
 
 h1 {
     font-size: x-large;
@@ -65,16 +83,21 @@ h2.abstract {
 div.grid {
     position:absolute
 }
+#header h1,
+#header h2 {
+    display: inline;
+}
+
 div#header {
     padding: 8px;
     border-style: none none dotted none;
     border-width: 1px;
     background-color: #EEEEEE;
-    height: 44px;
+    height: 53px;
     top:0px;left:0px;right:0px;
 }
 div#body {
-    top:60px;
+    top:53px;
     left:0px;
     right:0px;
     bottom:0px;
@@ -102,4 +125,14 @@ div#leftwrap {
     height: 99%;
     margin: 0;
     padding: 0;
+}
+
+#hleft {
+    position: absolute;
+    left: 0;
+    width: 250px;
+    padding: 0 10px;
+}
+#hright {
+    margin-left:230px;
 }
