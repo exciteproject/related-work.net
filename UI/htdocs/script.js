@@ -2,7 +2,7 @@ function loadid(id) {
     $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
     $.get("/meta/" + id, function(data, status){
         var rec = data[0];
-        if(!'meta_id' in rec){return}
+        if(rec == null){return}
         $("#meta_id").text(rec['meta_id']);
         $("#title").text(rec['title']);
         $("#author").text(rec['author']);
