@@ -29,6 +29,10 @@ function loadid(id) {
     $.get("/references/" + id, function(data, status){
         var reflist = $("#ul_references");
         reflist.empty();
+        data.sort(function(a,b){
+            a = a.meta_id_target;
+            b = b.meta_id_target;
+            return (a===null)-(b===null) || +(a>b)||-(a<b);});
         for(var i=0; i<data.length; i++) {
             var li = document.createElement("li");
             if(data[i].meta_id_target == null){
