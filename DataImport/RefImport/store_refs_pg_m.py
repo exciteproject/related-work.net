@@ -22,13 +22,13 @@ SELECT * FROM refs_m WHERE ref_id = %s;
 """
 
 SQL_DELETE = """
-DELETE FROM refs WHERE ref_id = %s;
+DELETE FROM refs_m WHERE ref_id = %s;
 """
 
 class store:
     def __init__(self, **kwargs):
         self.con = psycopg2.connect(**kwargs)
-        self.cur = self.con.cursor('server-cursor')
+        self.cur = self.con.cursor()
         self.q   = [] # fresh list
 
     def table_create(self):
@@ -79,4 +79,5 @@ if __name__ == "__main__":
     print(s.flush())
     print(s.get("12345"))
     print(s.delete("12345"))
+    print(s.get("12345"))
     print(s.close())
