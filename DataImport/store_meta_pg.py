@@ -8,7 +8,7 @@ import psycopg2
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS meta(
-  id VARCHAR(50) PRIMARY KEY, -- arxiv ID in this case
+  meta_id VARCHAR(50) PRIMARY KEY, -- arxiv ID in this case
   author TEXT,   -- All authors concatenated by ' and '
   title TEXT,
   abstract TEXT,
@@ -23,21 +23,21 @@ DROP TABLE IF EXISTS meta;
 """
 
 SQL_INSERT = """
-INSERT INTO meta(id, author, title, abstract, subject, date, year)
+INSERT INTO meta(meta_id, author, title, abstract, subject, date, year)
 VALUES          (%s, %s,     %s,    %s,       %s,      %s,   %s)
 ON CONFLICT DO NOTHING;
 """
 
 SQL_GET = """
-SELECT * FROM meta WHERE id = %s;
+SELECT * FROM meta WHERE meta_id = %s;
 """
 
 SQL_DELETE = """
-DELETE FROM meta WHERE id = %s;
+DELETE FROM meta WHERE meta_id = %s;
 """
 
 SQL_SELECT_BY_AUTHOR_YEAR ="""
-SELECT id, title FROM meta
+SELECT meta_id, title FROM meta
 WHERE author=%s
 AND %s <= year AND year <= %s
 """
@@ -53,16 +53,16 @@ class store:
         self.q   = [] # fresh list
 
     def table_create(self):
-        self.cur.execute(SQL_CREATE);
-        self.con.commit();
-        return self.cur.statusmessage
-
-    def table_drop(self):
-        self.cur.execute(SQL_DROP);
+        self.cur.execute(SQL_CREATE)
         self.con.commit()
         return self.cur.statusmessage
 
-    def queue_arxiv_meta(self, _id, meta_dict):
+    def table_drop(self):
+        self.cur.execute(SQL_DROP)
+        self.con.commit()
+        return self.cur.statusmessage
+
+    def queue_arxiv_meta(self, _meta_id, meta_dict):
         "Queue data for insertion"
         author   = ' and '.join(meta_dict['creator'])
         title    = meta_dict['title'][0]
@@ -70,7 +70,7 @@ class store:
         subject  = ', '.join(meta_dict['subject'])
         date     = meta_dict['date'][0]
         year     = date[0:4]
-        self.q.append([_id, author, title, abstract, subject, date, year])
+        self.q.append([_meta_id, author, title, abstract, subject, date, year])
 
     def flush(self):
         "Write out queue to DB"
@@ -80,14 +80,14 @@ class store:
         self.q = [] # clear queue
         return self.cur.statusmessage
 
-    def get(self, _id):
+    def get(self, _meta_id):
         "Lookup a key in the db"
-        self.cur.execute(SQL_GET, (_id,))
+        self.cur.execute(SQL_GET, (_meta_id,))
         return self.cur.fetchone()
 
-    def delete(self, _id):
+    def delete(self, _meta_id):
         "Delete a key from the db"
-        self.cur.execute(SQL_DELETE, (_id,))
+        self.cur.execute(SQL_DELETE, (_meta_id,))
         self.con.commit()
         return self.cur.statusmessage
 

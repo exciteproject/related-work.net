@@ -1,16 +1,14 @@
 from __future__ import print_function
 import psycopg2
 
-# The meta DB shall only hold values that are currently needed in the
-# system. If we later need more information, we can go to the original
-# sources. We should not try to capture all information that is
-# present in the records.
+# The refs table contains a unique ID, 
+# source meta id, and reference text for every reference
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS refs (
-  id VARCHAR(50) PRIMARY KEY, -- Auto increment field
-  meta_id VARCHAR(50),  -- Meta id of the paper containing the reference
-  ref TEXT  -- Reference text
+  ref_id VARCHAR(50) PRIMARY KEY, -- Auto increment field
+  meta_id_source VARCHAR(50),  -- Meta id of the paper containing the reference
+  ref_text TEXT  -- Reference text
 );
 """
 
@@ -19,17 +17,17 @@ DROP TABLE IF EXISTS refs;
 """
 
 SQL_INSERT = """
-INSERT INTO refs(meta_id, ref)
-VALUES          (%s,      %s)
+INSERT INTO refs(meta_id_source, ref_text)
+VALUES          (%s, %s)
 ON CONFLICT DO NOTHING;
 """
 
 SQL_GET = """
-SELECT * FROM refs WHERE meta_id = %s
+SELECT * FROM refs WHERE meta_id_source = %s;
 """
 
 SQL_DELETE = """
-DELETE FROM refs WHERE meta_id = %s;
+DELETE FROM refs WHERE meta_id_source = %s;
 """
 
 class store:
@@ -39,39 +37,39 @@ class store:
         self.q   = [] # fresh list
 
     def table_create(self):
-        self.cur.execute(SQL_CREATE);
-        self.con.commit();
-        return self.cur.statusmessage
-
-    def table_drop(self):
-        self.cur.execute(SQL_DROP);
+        self.cur.execute(SQL_CREATE)
         self.con.commit()
         return self.cur.statusmessage
 
-    def queue_ref(self, meta_id, ref):
+    def table_drop(self):
+        self.cur.execute(SQL_DROP)
+        self.con.commit()
+        return self.cur.statusmessage
+
+    def queue_ref(self, meta_id_source, ref_text):
         "Queue data for insertion"
-        self.q.append([meta_id, ref])
+        self.q.append([meta_id_source, ref_text])
 
     def flush(self):
         "Write out queue to DB"
         n = len(self.q)
-        self.cur.executemany(SQL_INSERT, self.q);
+        self.cur.executemany(SQL_INSERT, self.q)
         self.con.commit()
         self.q = [] # clear queue
         return self.cur.statusmessage
 
-    def get(self, meta_id):
+    def get(self, meta_id_source):
         "Lookup citations for a paper"
-        self.cur.execute(SQL_GET, (meta_id,))
+        self.cur.execute(SQL_GET, (meta_id_source,))
         return self.cur.fetchall()
 
     def get_all_references(self):
         self.cur.execute("SELECT * FROM refs")
         return self.cur
 
-    def delete(self, meta_id):
+    def delete(self, meta_id_source):
         "Delete all references of a paper in the db"
-        self.cur.execute(SQL_DELETE, (meta_id,))
+        self.cur.execute(SQL_DELETE, (meta_id_source,))
         self.con.commit()
         return self.cur.statusmessage
 

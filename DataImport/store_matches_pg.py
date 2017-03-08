@@ -5,15 +5,16 @@ import psycopg2
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS matches (
   ref_id VARCHAR(50), -- Reference ID, AI number
-  target_meta_id VARCHAR(50), -- Paper cited by the reference
-  source_meta_id VARCHAR(50), -- Paper containing the reference
+  meta_id_target VARCHAR(50), -- Paper cited by the reference
+  meta_id_source VARCHAR(50), -- Paper containing the reference
   CONSTRAINT ref_unique UNIQUE(ref_id)
 );
 """
 
 SQL_INDEX = """
-CREATE INDEX IF NOT EXISTS matches_meta_id_idx ON matches (target_meta_id);
-CREATE INDEX IF NOT EXISTS matches_source_meta_id_idx ON matches (source_meta_id);
+CREATE INDEX IF NOT EXISTS matches_meta_id_idx ON matches (meta_id_target);
+CREATE INDEX IF NOT EXISTS matches_source_meta_id_idx ON matches (meta_id_source);
+CREATE INDEX IF NOT EXISTS matches_ref_id_idx ON matches (ref_id);
 """
 
 SQL_DROP = """
@@ -21,7 +22,7 @@ DROP TABLE IF EXISTS matches;
 """
 
 SQL_INSERT = """
-INSERT INTO matches(ref_id, target_meta_id, source_meta_id)
+INSERT INTO matches(ref_id, meta_id_target, meta_id_source)
 VALUES          (%s, %s, %s)
 ON CONFLICT DO NOTHING;
 """
@@ -31,11 +32,11 @@ SELECT * FROM matches WHERE ref_id = %s;
 """
 
 SQL_GET_CITED_BY = """
-SELECT * FROM matches WHERE target_meta_id = %s;
+SELECT * FROM matches WHERE meta_id_target = %s;
 """
 
 SQL_GET_REFERENCES = """
-SELECT * FROM matches WHERE source_meta_id = %s;
+SELECT * FROM matches WHERE meta_id_source = %s;
 """
 
 SQL_DELETE = """
@@ -50,24 +51,24 @@ class store:
         self.q = []  # fresh list
 
     def table_create(self):
-        self.cur.execute(SQL_CREATE);
+        self.cur.execute(SQL_CREATE)
         self.cur.execute(SQL_INDEX)
-        self.con.commit();
-        return self.cur.statusmessage
-
-    def table_drop(self):
-        self.cur.execute(SQL_DROP);
         self.con.commit()
         return self.cur.statusmessage
 
-    def queue_match(self, ref_id, target_meta_id, source_meta_id):
+    def table_drop(self):
+        self.cur.execute(SQL_DROP)
+        self.con.commit()
+        return self.cur.statusmessage
+
+    def queue_match(self, ref_id, meta_id_target, meta_id_source):
         "Queue data for insertion"
-        self.q.append([ref_id, target_meta_id, source_meta_id])
+        self.q.append([ref_id, meta_id_target, meta_id_source])
 
     def flush(self):
         "Write out queue to DB"
         n = len(self.q)
-        self.cur.executemany(SQL_INSERT, self.q);
+        self.cur.executemany(SQL_INSERT, self.q)
         self.con.commit()
         self.q = []  # clear queue
         return self.cur.statusmessage
@@ -77,14 +78,14 @@ class store:
         self.cur.execute(SQL_GET, (ref_id,))
         return self.cur.fetchall()
 
-    def get_cited_by(self, meta_id):
+    def get_cited_by(self, meta_id_target):
         "Lookup citations for a paper"
-        self.cur.execute(SQL_GET_CITED_BY, (meta_id,))
+        self.cur.execute(SQL_GET_CITED_BY, (meta_id_target,))
         return self.cur.fetchall()
 
-    def get_references(self, meta_id):
+    def get_references(self, meta_id_source):
         "Lookup references for a paper"
-        self.cur.execute(SQL_GET_REFERENCES, (meta_id,))
+        self.cur.execute(SQL_GET_REFERENCES, (meta_id_source,))
         return self.cur.fetchall()
 
     def delete(self, ref_id):
