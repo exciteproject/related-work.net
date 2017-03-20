@@ -12,7 +12,7 @@ con = psycopg2.connect(user="rw", database="rw")
 cur = con.cursor()
 f = open(csv_file, 'r')
 try:
-    cur.copy_from(f, dest_table, sep=',')
+    cur.copy_from(f, dest_table, sep='\t')
     con.commit()
 except psycopg2.ProgrammingError:
     traceback.print_exc()
