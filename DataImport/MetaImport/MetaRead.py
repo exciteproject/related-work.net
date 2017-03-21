@@ -11,15 +11,15 @@ def get_json_from_dir(json_dir, limit = -1):
     for file_name in os.listdir(json_dir):
         if not file_name.endswith('.json'): continue
 
-        print "Processing", file_name
+        print("Processing", file_name)
 
         try:
             fh = open(json_dir + file_name)
             objects = json.load(fh)
             fh.close()
         except (IOError, ValueError) as Err:
-            print "Error loading json file", json_dir + file_name
-            print Err
+            print("Error loading json file", json_dir + file_name)
+            print(Err)
             continue
 
         for obj in objects:
@@ -40,14 +40,14 @@ def get_meta_from_pkl(pkl_dir, limit = -1):
     for pkl_file_name in os.listdir(pkl_dir):
         if not pkl_file_name.endswith('.pkl'): continue
 
-        print "Processing", pkl_file_name
+        print("Processing", pkl_file_name)
 
         try:
             fh = open(pkl_dir + pkl_file_name)
             meta_list = pickle.load(fh)
             fh.close()
         except:
-            print "Error loading pkl file", pkl_dir + pkl_file_name
+            print("Error loading pkl file", pkl_dir + pkl_file_name)
             continue
 
 
@@ -61,7 +61,7 @@ def get_meta_from_pkl(pkl_dir, limit = -1):
                 # we remove the prefix 'oai:arXiv.org:'
                 rec_id = oa_id.split(':')[-1]
             except:
-                print "Error in record found in ", pkl_file_name
+                print("Error in record found in ", pkl_file_name)
                 continue
 
             yield rec_id, meta_dict

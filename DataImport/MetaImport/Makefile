@@ -20,7 +20,7 @@ pg-user-and-db:
 
 pg-tables:
 	@# psql -U rw -c 'CREATE TABLE IF NOT EXISTS oa_results(key TEXT PRIMARY KEY, value JSON);'
-	@#psql -U rw -c 'CREATE TABLE IF NOT EXISTS meta(id VARCHAR(50) PRIMARY KEY, author TEXT, title TEXT, abstract TEXT, info TEXT, subject TEXT, year INTEGER);'
+	@#psql -U rw -c 'CREATE TABLE IF NOT EXISTS meta(meta_id VARCHAR(50) PRIMARY KEY, author TEXT, title TEXT, abstract TEXT, info TEXT, subject TEXT, year INTEGER);'
 
 pg-results:
 	psql -U rw -c 'SELECT key FROM oa_results;'

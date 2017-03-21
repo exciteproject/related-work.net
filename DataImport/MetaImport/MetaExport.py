@@ -38,13 +38,13 @@ db_file       = '../DATA/META/arxiv_meta.db'
 
 def main():
     # print_records()
-    print "JSON export"
+    print("JSON export")
     json_export()
 
-    print "Writing", db_file
-    print "Writing meta table"
+    print("Writing", db_file)
+    print("Writing meta table")
     fill_meta_table(db_file,pkl_dir)
-    print "Writing author lookup table"
+    print("Writing author lookup table")
     fill_author_table(db_file,pkl_dir)
 
 
@@ -56,7 +56,7 @@ def print_records(pkl_dir=pkl_dir):
         date    = meta_dict['date'][0] 
         subject = ', '.join(meta_dict['subject'])
         year    = date[0:4]
-        print "|".join([rec_id, authors, title, info, date, subject, year])
+        print("|".join([rec_id, authors, title, info, date, subject, year]))
 
 
 def fill_meta_table(db_file, pkl_dir = pkl_dir, max_batch = -1):
@@ -91,7 +91,7 @@ def fill_meta_table(db_file, pkl_dir = pkl_dir, max_batch = -1):
     # Write rows, 10.000 per transaction
     for batch_count, batch in enumerate(group_generator(rows,10000)):
         if batch_count == max_batch: break
-        if DEBUG: print "Writing meta row ", batch_count*10000
+        if DEBUG: print("Writing meta row ", batch_count * 10000)
         with con:
             cur.executemany("INSERT INTO meta VALUES(?, ?, ?, ?, ?, ?, ?)", batch)
 
@@ -129,7 +129,7 @@ def fill_author_table(db_file,pkl_dir=pkl_dir, max_batch = -1):
     # Write rows, 10.000 per transaction
     for batch_count, batch in enumerate(group_generator(rows,10000)):
         if batch_count == max_batch: break
-        if DEBUG: print "Writing author info", batch_count*10000
+        if DEBUG: print("Writing author info", batch_count * 10000)
         with con:
             cur.executemany("INSERT INTO ayit_lookup VALUES(?, ?, ?, ?)", batch)
         
@@ -163,7 +163,7 @@ if __name__ == '__main__':
         main()
 
     except:
-        print "EROOR"
+        print("EROOR")
 
         import sys, traceback, pdb
         type, value, tb = sys.exc_info()

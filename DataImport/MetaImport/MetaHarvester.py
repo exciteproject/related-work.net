@@ -56,14 +56,16 @@ delta_months = args.delta
 # Export to directory
 export_dir = args.export
 if not os.path.exists(export_dir): 
-    print "Creating %s" % export_dir
+    print("Creating %s" % export_dir)
     os.makedirs(export_dir)
 
 
 # Print Status
-print 'Harvesting data from %s in format %s'   % (url,metadataPrefix)
-print 'Date Range   : %s -- %s in steps of %d' % (from_date.strftime('%Y-%m-%d'),until_date.strftime('%Y-%m-%d'),delta_months)
-print 'Write Output : %s'                      % export_dir
+print('Harvesting data from %s in format %s' % (url, metadataPrefix))
+print('Date Range   : %s -- %s in steps of %d' % (
+from_date.strftime('%Y-%m-%d'), until_date.strftime('%Y-%m-%d'), delta_months))
+print('Write Output : %s' % export_dir)
+
 
 #
 # Main Program
@@ -72,12 +74,12 @@ print 'Write Output : %s'                      % export_dir
 def main():
     global client
 
-    print '****** Starting Script ******' 
+    print('****** Starting Script ******')
 
     client = oaipmh.client.Client(url)
     out = client.identify()
 
-    print '****** Connected to repository: %s ******' % out.repositoryName()
+    print('****** Connected to repository: %s ******' % out.repositoryName())
 
     # got to update granularity or we barf with:
     # oaipmh.error.BadArgumentError: Max granularity is YYYY-MM-DD:2003-04-10T00:00:00Z
@@ -101,7 +103,7 @@ def main():
         try:
             records = list(get_records(c_date,n_date))
         except:
-            print "failed recieving records!"
+            print("failed recieving records!")
             continue
             
         # print_records(records, max_recs = 2)
@@ -110,7 +112,7 @@ def main():
         
         write_records(records, filename)
 
-    print 'Total Time spent: %d seconds' % (time.time() - start)
+    print('Total Time spent: %d seconds' % (time.time() - start))
 
 
 def loop_months(start_date, end_date, month_step=1):
@@ -136,14 +138,14 @@ def loop_months(start_date, end_date, month_step=1):
         current_date = next_date
 
 def check_formats(metadataPrefix):
-    print '****** Available formats are: *****'
+    print('****** Available formats are: *****')
     # get a list of the metadata formats
     # returns a generator object with entries (format_name,description,None)
 
     format_gen = client.listMetadataFormats() 
     
     formats = [ f[0] for f in format_gen ]
-    print formats
+    print(formats)
 
     # test if we have the format is supporrted
     if not metadataPrefix in formats: 
@@ -151,13 +153,13 @@ def check_formats(metadataPrefix):
 
 
 def get_records(start_date,end_date):
-    print '****** Getting records ******'
-    print 'from   : %s' % start_date.strftime('%Y-%m-%d')
-    print 'until  : %s' % end_date.strftime('%Y-%m-%d')
+    print('****** Getting records ******')
+    print('from   : %s' % start_date.strftime('%Y-%m-%d'))
+    print('until  : %s' % end_date.strftime('%Y-%m-%d'))
 
     chunk_time = time.time()
 
-    print 'client.listRecords(from_=',start_date,'until=',end_date,'metadataPrefix=',metadataPrefix,'))'
+    print('client.listRecords(from_=', start_date, 'until=', end_date, 'metadataPrefix=', metadataPrefix, '))')
     records = list(client.listRecords(
             from_          = start_date,  # yes, it is from_ not from
             until          = end_date,
@@ -165,29 +167,29 @@ def get_records(start_date,end_date):
             ))
 
     d_time = time.time() - chunk_time
-    print 'recieved %d records in %d seconds' % (len(records), d_time )
+    print('recieved %d records in %d seconds' % (len(records), d_time))
     chunk_time = time.time()
 
     return records
 
 def write_records(records, filename):
-    print '***** Writing records to %s ********' % filename
+    print('***** Writing records to %s ********' % filename)
     fh = open(filename,'wb')
     pickle.dump(records,fh)
     fh.close()
 
 def print_records(records, max_recs = 5):
-    print '****** Printing data ******'
+    print('****** Printing data ******')
     # for large collections this breaks
     count = 1
 
     for record in records:
         header, metadata, about = record
         map = metadata.getMap()
-        print '****** Current record: %s' % header.identifier()
+        print('****** Current record: %s' % header.identifier())
         for key, value in map.items():
-            print '  ', key, ':', value
-            
+            print('  ', key, ':', value)
+
         if count > max_recs: break
         count += 1
 
