@@ -22,10 +22,5 @@ SELECT * FROM $IMPORT_TBL_NAME ORDER BY counter ASC"
 # import data into table
 python csv_to_pg.py $IMPORT_DATA $IMPORT_TBL_NAME
 
-# create rest endpoint to display view
-# add an extra location entry to UI/etc/nginx.conf
-# section http/server
-# make
-
 
 
