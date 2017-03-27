@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
+    font-size: 90%;
+}
+
+a:link { color:#000070; text-decoration:none; }
+a:hover { text-decoration:underline; }
+a:visited { color:#551A8B; text-decoration:none; }
+
+#body {
+    margin: 0 80px 0 80px;
+}
+
+h1 {
+    font-size: x-large;
+    font-weight: bold;
+    line-height: 150%;
+}
+
+h2 {
+    font-size: medium;
+    line-height: 180%;
+}
+
+
+#headder {
+    padding: 8px;
+    border-style: none none dotted none;
+    border-width: 1px;
+    background-color: #EEEEEE;
+}
+
+#div-search{
+    margin-top: 50px;
+}
