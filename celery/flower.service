@@ -1,0 +1,8 @@
+[Unit]
+Description=Flower celery service
+
+[Service]
+ExecStart=/bin/bash -c "/export/home/dkostic/related-work.net/DataImport/flower.sh"
+
+[Install]
+WantedBy=multi-user.target
