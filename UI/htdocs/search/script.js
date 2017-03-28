@@ -12,7 +12,7 @@ $(document).ready(function () {
                 $('<li>').append(
                     $("<a>").attr('href', '/preview/#'+item.meta_id).text(item.author + ', ').append(
                         $("<em>").text(item.title)
-                    ).append("<span>").text("cited: " + item.citations)
+                    ).append("<span> (Cited: " + item.citations + ")</span>")
                 )
             );
         });
