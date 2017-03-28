@@ -35,3 +35,8 @@ h2 {
 #div-search{
     margin-top: 50px;
 }
+
+#div-results{
+    width: 80%;
+    text-align: left;
+}
