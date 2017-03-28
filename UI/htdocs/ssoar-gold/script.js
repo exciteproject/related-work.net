@@ -1,5 +1,5 @@
 function loadid(id) {
-    $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar-pdf/" + id + ".pdf");
+    $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar-gold/" + id + ".pdf");
     // $.get("/meta/" + id, function(data, status){
     //     var rec = data[0];
     //     $("#meta_id").text(rec['meta_id']);
