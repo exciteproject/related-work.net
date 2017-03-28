@@ -1,7 +1,7 @@
-$(document).ready(function () {
-    $("#form-search").submit(function( event ) {
-    var query = $("#q").val();
+function loadResults(query){
     $("#ul_results").empty();
+    $("#title_q").text(query);
+    window.history.pushState('Page', 'Title', '/search/#' + query);
     $.get("/search_arxiv/" + query, function (data, status) {
         if(data.length == 0){
             $("#ul_results").append(
@@ -18,6 +18,13 @@ $(document).ready(function () {
         });
 
     });
-    event.preventDefault();
-});
+}
+$(document).ready(function () {
+    loadResults(window.location.hash.substring(1) || "colorful");
+
+    $("#form-search").submit(function( event ) {
+        var query = $("#q").val();
+        loadResults(query);
+        event.preventDefault();
+    });
 });
