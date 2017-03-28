@@ -15,7 +15,7 @@ ref_id VARCHAR(50),
 ref_text TEXT)"
 
 # create required indexes
-psql -U rw -c "CREATE INDEX ref_id_idx ON $IMPORT_TBL_NAME(ref_id)"
+psql -U rw -c "CREATE INDEX ON $IMPORT_TBL_NAME(ref_id)"
 # create views
 psql -U rw -c "CREATE OR REPLACE VIEW view_$IMPORT_TBL_NAME as
 SELECT * FROM $IMPORT_TBL_NAME ORDER BY counter ASC"
