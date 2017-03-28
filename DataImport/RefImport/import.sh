@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # path to file being imported and name of table
-IMPORT_DATA=ssoar.csv
-IMPORT_TBL_NAME=refs_m
+IMPORT_DATA=$1
+IMPORT_TBL_NAME=$2
+
 
 # throw away comments
 # grep -v "^#" $IMPORT_DATA > import.tmp
