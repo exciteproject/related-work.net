@@ -8,7 +8,7 @@ parser.add_argument('dest_table', help='destination table to import to', type=st
 args = parser.parse_args()
 csv_file = args.csv_file
 dest_table = args.dest_table
-con = psycopg2.connect(user="rw", database="rw")
+con = psycopg2.connect(user="rw", password="rw", database="rw")
 cur = con.cursor()
 f = open(csv_file, 'r')
 try:

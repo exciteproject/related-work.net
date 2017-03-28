@@ -7,7 +7,7 @@ function loadid(id) {
     //     $(".author").text(rec['author']);
     //     $("#p_abstract").text(rec['abstract']);
     // });
-    $.get("/ssoar/" + id, function(data, status){
+    $.get("/ssoar-json/" + id, function(data, status){
         var reflist = $("#ul_references");
         reflist.empty();
         for(var i=0; i<data.length; i++) {
