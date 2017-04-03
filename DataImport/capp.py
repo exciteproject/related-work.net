@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals, print_function
 import sys
+import os
 
 from celery import Celery
 
@@ -37,13 +38,26 @@ from store_fs import store as store_fs
 
 @app.task
 def fetch_arxiv_meta(*args):
-    s = store("/EXCITE/datasets/arxiv/meta/")
+    s = store_fs("/EXCITE/datasets/arxiv/meta/")
     key = ":".join(args)
     if s.exists(key):
         return "Done Already"
     else:
         s.set(key, _fetch(*args))
         return "OK"
+
+
+def schedule_fetch_arxiv_meta():
+    dates = [("2009-02-01","2009-03-01"), ("2010-06-01","2010-07-01"), ("2010-08-01","2010-09-01"),
+             ("2010-10-01","2010-11-01"), ("2011-06-01","2011-07-01")]
+    dates2 = [("2016-01-01", "2016-02-01"), ("2016-02-01", "2016-03-01"), ("2016-03-01", "2016-04-01"),
+              ("2016-04-01", "2016-05-01"), ("2016-05-01", "2016-06-01"), ("2016-06-01", "2016-07-01"),
+              ("2016-07-01", "2016-08-01"), ("2016-08-01", "2016-09-01") ,("2016-09-01", "2016-10-01") ,
+              ("2016-10-01", "2016-11-01"), ("2016-11-01", "2016-12-01"), ("2016-12-01", "2017-01-01")]
+    dates3 = [("2017-02-01", "2017-03-01"), ("2017-03-01", "2017-04-01")]
+    dates3.extend(dates)
+    for date in dates3:
+        print(fetch_arxiv_meta.delay(date[0], date[1]))
 
 ## Create MetaDB
 from store_meta_pg import store as store_pg
@@ -61,20 +75,28 @@ def insert_arxiv_meta_bucket(key):
         if n % 1000 == 0: log(dst.flush())
     log(dst.flush())
 
-## Extract Buckets
+
+def schedule_insert_arxiv_meta_bucket():
+    folder = "/EXCITE/datasets/arxiv/meta"
+    all_files = os.listdir(folder)
+    all_files.remove("README.md")
+    for file in all_files:
+        print(insert_arxiv_meta_bucket.delay(file))
+
+# Extract Buckets
 from pathlib import Path
 from subprocess import call
 @app.task
 def bucket_extract(name):
     log("Extracting bucket: " + name)
-    src = Path("/EXCITE/datasets/arxiv/src_buckets")
-    dst = Path("/EXCITE/datasets/arxiv/paper")
+    src = Path("/EXCITE/datasets/arxiv/pdf")
+    dst = Path("/EXCITE/datasets/arxiv/pdfs")
     if not dst.exists():
         dst.mkdir()
     call(['tar', 'xf', str(src / name) , '-C', str(dst)])
 
 def schedule_bucket_extract():
-    src = Path("/EXCITE/datasets/arxiv/src_buckets")
+    src = Path("/EXCITE/datasets/arxiv/pdf")
     for entry in src.iterdir():
         log("Scheduling extraction: " + entry.name)
         bucket_extract.delay(entry.name)
@@ -154,10 +176,12 @@ def schedule_ref_matching():
 
 
 if __name__ == "__main__":
-    # print(fetch_arxiv_meta("2016-01-10","2016-01-11"))
-    # print(fetch_arxiv_meta.delay("2016-01-10","2016-01-12"))
+    # print(fetch_arxiv_meta(("2010-06-01","2010-07-01")))
+    # print(fetch_arxiv_meta.delay("2017-01-01","2017-02-01"))
+    # schedule_fetch_arxiv_meta()
     # insert_arxiv_meta_bucket("2012-04-01:2012-05-01")
+    schedule_insert_arxiv_meta_bucket()
     # schedule_bucket_extract()
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
-    schedule_ref_matching()
+    # schedule_ref_matching()

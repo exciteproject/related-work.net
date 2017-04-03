@@ -19,7 +19,7 @@ class store:
     def get(self, key):
         file = self.base / key
         if not self.exists(key):
-            return null
+            return None
         with io.open(str(file), mode='rb') as fh:
             return json.loads(fh.read().decode('utf8'))
 
