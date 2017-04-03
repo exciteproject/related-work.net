@@ -10,6 +10,7 @@ SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS meta(
   meta_id VARCHAR(50) PRIMARY KEY, -- arxiv ID in this case
   author TEXT,   -- All authors concatenated by ' and '
+  author_trunc VARCHAR(100),
   title TEXT,
   abstract TEXT,
   subject TEXT,  -- E.g. Quantum Physics
