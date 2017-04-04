@@ -32,10 +32,10 @@ meta_json_dir = '../DATA/META/JSON/'
 
 def main():
     if not db.node.indexes.exists('author_idx'):
-        print "Setup new db"
+        print("Setup new db")
         setup_db()
     else:
-        print "Reading db"
+        print("Reading db")
         init_globals()
 
     # Add paper nodes with information from meta_pkl_feed
@@ -65,7 +65,7 @@ def setup_db(db=db):
     global ROOT, PAPER, AUTHOR
     global author_idx, source_idx, label_idx
 
-    if "DEBUG": print "Creating Database."
+    if "DEBUG": print("Creating Database.")
     # Create a database model - run only once
 
 
@@ -109,7 +109,7 @@ def meta_fill_db(db=db,limit = -1):
     for batch_count, batch in enumerate(group_generator(
             get_json_from_dir(meta_json_dir, limit = limit),
             chunk_size)):
-        print 'Processing metadata record %d. Time elapsed: %d sec.' % (batch_count * chunk_size, time() - start)
+        print('Processing metadata record %d. Time elapsed: %d sec.' % (batch_count * chunk_size, time() - start))
         with db.transaction:
             for rec_id, meta_dict in batch:
                 # create a new node
@@ -136,7 +136,7 @@ def meta_fill_db(db=db,limit = -1):
 
                     # create a relation paper_node --[author]--> author_node
                     paper_node.author(author_node)
-            print 'closing transaction'
+            print('closing transaction')
 
 
 def add_get_author(author_name):
@@ -176,7 +176,7 @@ def reference_fill_db(match_file = match_file , db=db):
                 try:
                     source_id, ref_string, target_id = line.rstrip().split('|')
                 except ValueError:
-                    print 'Skipped line: not not enough separators "|". ',  line[:20]
+                    print('Skipped line: not not enough separators "|". ', line[:20])
                     continue
 
                 # .single property is broken! Have to loop through results (which should be a single one)
@@ -184,7 +184,7 @@ def reference_fill_db(match_file = match_file , db=db):
                 for source_node in source_idx['id']['arxiv:' + source_id]: 
                     break
                 else: 
-                    print "Skipped line: source id not forund. ", line[:20]
+                    print("Skipped line: source id not forund. ", line[:20])
                     continue
                 
 
@@ -227,7 +227,7 @@ def unmatched_reference_fill_db(match_file = match_file , db=db):
                 try:
                     source_id, ref_string, target_id = line.rstrip().split('|')
                 except ValueError:
-                    print 'Skipped line: not not enough separators "|". ',  line[:20]
+                    print('Skipped line: not not enough separators "|". ', line[:20])
                     continue
 
                 if not target_id == '':
@@ -252,7 +252,7 @@ def unmatched_reference_fill_db(match_file = match_file , db=db):
                 for last_node in source_idx['id']['arxiv:' + last_id]:
                     break
                 else: 
-                    print "Skipped line: source id not forund. ", last_id
+                    print("Skipped line: source id not forund. ", last_id)
                     last_id = source_id
                     continue
                 # last node exists #
@@ -267,7 +267,7 @@ def unmatched_reference_fill_db(match_file = match_file , db=db):
 def write_caches():
     start = time()
     for i, batch in enumerate(group_generator(PAPER.type.incoming, 1000)):
-        print "Filling citaion and author buffers. %d papers processed in %d sec." % (i*1000, time()-start)
+        print("Filling citaion and author buffers. %d papers processed in %d sec." % (i * 1000, time() - start))
         with db.transaction:
             for paper_rel in batch:
                 paper_node = paper_rel.startNode
@@ -293,7 +293,8 @@ def write_cite_rank(iterations=4):
 
     for iteration in range(iterations):
         for batch_count, batch in enumerate(group_generator(PAPER.type.incoming, 1000)):
-            print "Calculating CiteRank. Iteration %d. Processed %d papers in %d sec." % (iteration, batch_count*1000, time()-start)
+            print("Calculating CiteRank. Iteration %d. Processed %d papers in %d sec." % (
+            iteration, batch_count * 1000, time() - start))
             with db.transaction:
                 for paper_rel in batch:
                     paper_node = paper_rel.startNode
@@ -323,14 +324,14 @@ def build_search_index():
 
     # Loop through papers
     for batch_count, batch in enumerate(group_generator(PAPER.type.incoming, 1000)):
-        print "Building search index. Processing paper %d. Elapsed time %d sec," % ( batch_count*1000, time()-start)
+        print("Building search index. Processing paper %d. Elapsed time %d sec," % (batch_count * 1000, time() - start))
         with db.transaction:
             for paper_rel in batch:
                 paper_node = paper_rel.startNode
                 search_idx['title'][paper_node['title']]=paper_node
 
     for batch_count, batch in enumerate(group_generator(AUTHOR.type.incoming, 1000)):
-        print "Building search index. Processing paper %d. Elapsed time %d sec," % ( batch_count*1000, time()-start)
+        print("Building search index. Processing paper %d. Elapsed time %d sec," % (batch_count * 1000, time() - start))
         with db.transaction:
             for author_rel in batch:
                 author_node = author_rel.startNode
