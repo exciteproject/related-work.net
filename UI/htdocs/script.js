@@ -1,8 +1,8 @@
 function loadid(id) {
-    $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
+    // $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
     $.get("/meta/" + id, function(data, status){
         var rec = data[0];
-        if(rec == null){
+        if(rec === null){
             $("#title").text("Metadata not available");
             $("#meta_id").text(id);
             $("#author").text("");
@@ -35,8 +35,8 @@ function loadid(id) {
             return (a===null)-(b===null) || +(a>b)||-(a<b);});
         for(var i=0; i<data.length; i++) {
             var li = document.createElement("li");
-            if(data[i].meta_id_target == null){
-                li.textContent = '[] :: ' + data[i].ref_text;
+            if(data[i].meta_id_target === null){
+                li.textContent = ':: ' + data[i].ref_text;
             } else {
                 var a = document.createElement("a");
                 a.textContent = '[' + data[i].meta_id_target + '] :: ' + data[i].ref_text;
