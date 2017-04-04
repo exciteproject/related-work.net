@@ -18,7 +18,13 @@ function loadid(id) {
         var reflist = $("#ul_citations");
         reflist.empty();
         for (var i = 0; i < data.length; i++) {
-            load_citation_meta(data[i].meta_id_source, data[i].ref_text);
+            reflist.append(
+                $('<li>').append(
+                    $('<a>').text('[' + data[i].meta_id_source + '] :: ' + data[i].author + ", ").append(
+                        $('<em>').text(data[i].title))).click(data[i].meta_id_source, loadev).append(
+                        $('<br>')
+                    ).append('Reference: "' + data[i].ref_text + '"')
+                );
         }
     });
     $.get("/references/" + id, function (data, status) {
@@ -30,16 +36,19 @@ function loadid(id) {
             return (a === null) - (b === null) || +(a > b) || -(a < b);
         });
         for (var i = 0; i < data.length; i++) {
-            var li = document.createElement("li");
             if (data[i].meta_id_target === null) {
-                li.textContent = data[i].ref_text;
+                reflist.append(
+                    $('<li>').text(data[i].ref_text)
+                );
             } else {
-                var a = document.createElement("a");
-                a.textContent = '[' + data[i].meta_id_target + '] :: ' + data[i].ref_text;
-                $(a).click(data[i].meta_id_target, loadev);
-                li.appendChild(a);
+                reflist.append(
+                $('<li>').append(
+                    $('<a>').text('[' + data[i].meta_id_target + '] :: ' + data[i].author + ", ").append(
+                        $('<em>').text(data[i].title))).click(data[i].meta_id_target, loadev).append(
+                        $('<br>')
+                    ).append('Reference: "' + data[i].ref_text + '"')
+                );
             }
-            reflist.append(li);
         }
     });
 }
@@ -47,19 +56,6 @@ function loadev(ev) {
     var meta_id = ev.data;
     window.history.pushState('Page', 'Title', '/#' + meta_id);
     loadid(meta_id);
-}
-function load_citation_meta(meta_id_source, ref_text) {
-    var reflist = $("#ul_citations");
-    $.get("/meta/" + meta_id_source, function (metadata) {
-        var rec = metadata[0];
-        reflist.append(
-            $('<li>').append(
-                $('<a>').text('[' + meta_id_source + '] :: ' + rec['author'] + ", ").append(
-                    $('<em>').text(rec['title']))).click(meta_id_source, loadev).append(
-                    $('<br>')
-                ).append('Reference: "' + ref_text + '"')
-            );
-    });
 }
 $(document).ready(function () {
     loadid(window.location.hash.substring(1) || "1305.2467");
