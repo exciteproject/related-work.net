@@ -1,3 +1,6 @@
+window.onhashchange = function() {
+    loadid(window.location.hash.substring(1) || "1305.2467");
+};
 function loadid(id) {
     $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar/" + id + ".pdf");
     // $.get("/meta/" + id, function(data, status){

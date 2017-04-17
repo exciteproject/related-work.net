@@ -1,3 +1,6 @@
+window.onhashchange = function() {
+    loadResults(window.location.hash.substring(1) || "colorful");
+};
 function loadResults(query){
     $("#ul_results").empty();
     $("#title_q").text(query);
