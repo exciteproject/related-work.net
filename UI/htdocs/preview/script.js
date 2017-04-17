@@ -6,16 +6,16 @@ function loadid(id) {
     $.get("/meta/" + id, function (data, status) {
         var rec = data[0];
         if (rec === null) {
-            $("#title").text("Metadata not available");
+            $(".title").text("Metadata not available");
             $("#meta_id").text(id);
-            $("#author").text("");
-            $("#p_abstract").text("");
+            $(".author").text("");
+            // $("#p_abstract").text("");
             return
         }
         $("#meta_id").text(rec['meta_id']);
-        $("#title").text(rec['title']);
-        $("#author").text(rec['author']);
-        $("#p_abstract").text(rec['abstract']);
+        $(".title").text(rec['title']);
+        $(".author").text(rec['author']);
+        // $("#p_abstract").text(rec['abstract']);
     });
     $.get("/citations/" + id, function (data, status) {
         var reflist = $("#ul_citations");
