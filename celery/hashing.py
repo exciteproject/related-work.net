@@ -33,7 +33,7 @@ if __name__ == '__main__':
         for file in files:
             num_processed += 1
             res = calc_hash(os.path.join(root,file))
-            res['arxiv_id'] = file.split('.')[0]
+            res['arxiv_id'] = file[:-4] # strip .pdf
             hashes.append(res)
             if num_processed % 5000 == 0:
                 print("Processing file {} out of {}. Percentage done: {}".format(num_processed, num_files,
