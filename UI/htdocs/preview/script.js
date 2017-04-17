@@ -2,7 +2,8 @@ window.onhashchange = function() {
     loadid(window.location.hash.substring(1) || "1305.2467");
 };
 function loadid(id) {
-    $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
+    // $("#preview").attr("src", "https://arxiv.org/pdf/" + id + ".pdf");
+    $("#preview").get(0).contentWindow.location.replace("https://arxiv.org/pdf/" + id + ".pdf");
     $.get("/meta/" + id, function (data, status) {
         var rec = data[0];
         if (rec === null) {

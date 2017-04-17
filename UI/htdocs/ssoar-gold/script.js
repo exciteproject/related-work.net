@@ -2,7 +2,8 @@ window.onhashchange = function() {
     loadid(window.location.hash.substring(1) || "1305.2467");
 };
 function loadid(id) {
-    $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar-gold/" + id + ".pdf");
+    // $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar-gold/" + id + ".pdf");
+    $("#preview").get(0).contentWindow.location.replace("http://excite-compute.west.uni-koblenz.de/ssoar-gold/" + id + ".pdf");
     // $.get("/meta/" + id, function(data, status){
     //     var rec = data[0];
     //     $("#meta_id").text(rec['meta_id']);
