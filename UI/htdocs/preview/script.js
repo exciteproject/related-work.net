@@ -57,7 +57,7 @@ function loadid(id) {
 }
 function loadev(ev) {
     var meta_id = ev.data;
-    window.history.pushState('Page', 'Title', '/#' + meta_id);
+    window.history.pushState('Page', 'Title', window.location.pathname + '#' + meta_id);
     loadid(meta_id);
 }
 $(document).ready(function () {
