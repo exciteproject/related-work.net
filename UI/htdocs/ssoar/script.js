@@ -1,5 +1,5 @@
 window.onhashchange = function() {
-    loadid(window.location.hash.substring(1) || "1305.2467");
+    loadid(window.location.hash.substring(1) || "20811-32266");
 };
 function loadid(id) {
     // $("#preview").attr("src", "http://excite-compute.west.uni-koblenz.de/ssoar/" + id + ".pdf");
