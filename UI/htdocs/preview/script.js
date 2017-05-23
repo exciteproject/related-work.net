@@ -66,8 +66,6 @@ $(document).ready(function () {
 
     $("#form_search").submit(function( event ) {
         var query = $("#q").val();
-        console.log("Query is " + query);
-        // loadResults(query);
         event.preventDefault();
         window.open('/search/#' + query,'_self',false);
     });

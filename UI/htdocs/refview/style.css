@@ -145,3 +145,18 @@ div#leftwrap {
 #hright {
     margin-left:230px;
 }
+
+#header_title {
+    display: inline;
+    float: left;
+}
+
+#header_search {
+    display: inline;
+    float: right;
+}
+
+#form_search {
+    margin-top: 5px;
+    margin-right: 5px;
+}
