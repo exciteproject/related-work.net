@@ -24,23 +24,6 @@ h2 {
     line-height: 180%;
 }
 
-#abstract {
-    width: 100%;
-    text-align:justify;
-    font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
-    line-height:140%;
-}
-
-h2.abstract {
-    display: inline;
-    line-height: 100%;
-}
-
-#meta {
-    width: 80%;
-    margin-top:50px;
-    align : center;
-}
 
 #headder {
     padding: 8px;
@@ -49,16 +32,20 @@ h2.abstract {
     background-color: #EEEEEE;
 }
 
-.references {
-    line-height: 130%;
-    text-align:left;
-    float:left; 
-    width:100%;
-} 
-
-.references ul {
-    margin: 0;
+#div-search{
+    margin-top: 50px;
 }
-.references ul li {
-    margin-top: 5;
+
+#div-results{
+    width: 80%;
+    text-align: left;
+    line-height: 130%;
+}
+
+#q{
+    width: 30%;
+}
+
+#ul_results > li{
+    padding-top: 5px;
 }

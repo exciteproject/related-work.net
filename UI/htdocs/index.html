@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Related-Work.net</title>
     <link rel="stylesheet" type="text/css" href="/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/loader.css">
     <script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/script.js"></script>
-  </head>
-  <body>
-    <div id='headder'>
-      <h1 style='display:inline'> <a href='/'>Related-Work.net</a> </h1>
-      <h2 style='display:inline'> > arxiv > <a href='#' id='meta_id'> </a> </h2>
-      <div style='display:inline; float:right; line-height:100%;'>
-        <form action="/search" method="get" style='margin:5 0 0 0'>
-          <input name="q" type="text" size="20"/>
-          <input type="submit" value="search"/>
+</head>
+<body>
+<div id='headder'>
+    <h1 style='display:inline'><a href='/'>Related-Work.net</a></h1>
+    <h2 style='display:inline'> > arxiv > <span id="title_q"></span></h2>
+</div>
+<div id="div-body" align="center">
+    <div id="div-search">
+        <h1><a href="/search">Related-Work.net</a></h1>
+        <p>Search through our arxiv dataset</p>
+        <form id="form-search" action="#" method="get">
+            <input id="q" name="q" type="text"/>
+            <input type="submit" value="search"/>
         </form>
-      </div>
     </div>
-    <div id="body">
-      <div id="meta">
-        <h1 id="title"></h1>
-        <h2 id="author"></h2>
-        <div id="abstract">
-          <h2 class="abstract">Abstract:</h2>
-          <p id="p_abstract"></p>
-        </div>
-      </div>
-      <div class="references">
-        <h2>Cited by</h2>
-        <ul id="ul_citations">
+    <div id="loader"></div>
+    <div id="div-results">
+        <ul id="ul_results">
         </ul>
-      </div>
-      <div class="references">
-        <h2>References</h2>
-        <ul id="ul_references">
-        </ul>
-      </div>
     </div>
+
+</div>
+
 </body>
 </html>
