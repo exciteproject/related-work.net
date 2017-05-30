@@ -45,3 +45,7 @@ h2 {
 #q{
     width: 30%;
 }
+
+#ul_results > li{
+    padding-top: 5px;
+}

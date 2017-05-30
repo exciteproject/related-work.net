@@ -2,6 +2,7 @@ window.onhashchange = function () {
     loadResults(window.location.hash.substring(1) || "colorful");
 };
 function loadResults(query) {
+    $("#loader").show();
     $("#ul_results").empty();
     $("#title_q").text(query);
     window.history.pushState('Page', 'Title', '/search/#' + query);
