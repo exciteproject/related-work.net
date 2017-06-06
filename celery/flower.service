@@ -2,7 +2,7 @@
 Description=Flower celery service
 
 [Service]
-ExecStart=/bin/bash -c "/export/home/dkostic/related-work.net/DataImport/flower.sh"
+ExecStart=/bin/bash -c "/EXCITE/celery/flower.sh"
 
 [Install]
 WantedBy=multi-user.target

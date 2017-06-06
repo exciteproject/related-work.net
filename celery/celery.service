@@ -1,0 +1,8 @@
+[Unit]
+Description=Celery service
+
+[Service]
+ExecStart=/bin/bash -c "/EXCITE/celery/celery.sh"
+
+[Install]
+WantedBy=multi-user.target

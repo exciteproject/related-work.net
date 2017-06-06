@@ -3,4 +3,4 @@ cd /EXCITE/celery
 source py3env/bin/activate
 cd DataImport/
 export PYTHONPATH=./tools
-flower -A capp --port=8099
+celery -A capp worker --concurrency=4

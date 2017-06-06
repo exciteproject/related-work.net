@@ -15,6 +15,7 @@ class store:
         file = self.base / key
         with io.open(str(file), mode='wb') as fh:
             fh.write(json.dumps(value, ensure_ascii=False).encode('utf8'))
+        print("Saved to file: {}".format(file))
 
     def get(self, key):
         file = self.base / key

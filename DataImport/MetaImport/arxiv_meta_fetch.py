@@ -19,8 +19,10 @@ import oaipmh.client, oaipmh.metadata, oaipmh.error
 ARXIV_URL = 'http://export.arxiv.org/oai2'
 METADATA_PREFIX = 'oai_dc'
 
+
 def _log(str):
     print(str, file=sys.stderr)
+
 
 def _oa_connect():
     _log("Initializing connection")
@@ -38,9 +40,10 @@ def _oa_connect():
     client.getMetadataRegistry().registerReader(
         METADATA_PREFIX,
         oaipmh.metadata.oai_dc_reader
-        )
+    )
 
     return client
+
 
 def _parse(oa_head, oa_meta):
     oa_id = oa_head.identifier()
@@ -52,17 +55,19 @@ def _parse(oa_head, oa_meta):
     rec_id = oa_id.split(':')[-1]
     return [rec_id, meta_dict]
 
+
 def _get_records(client, start_date, end_date):
     _log("Fetching records: {} - {}".format(start_date, end_date))
     try:
         recs = client.listRecords(
-            from_          = start_date,  # yes, it is from_ not from
-            until          = end_date,
-            metadataPrefix = METADATA_PREFIX
+            from_=start_date,  # yes, it is from_ not from
+            until=end_date,
+            metadataPrefix=METADATA_PREFIX
         )
-        return [ _parse(oa_head, oa_meta) for oa_head, oa_meta, x in recs ]
+        return [_parse(oa_head, oa_meta) for oa_head, oa_meta, x in recs]
     except oaipmh.error.NoRecordsMatchError:
         return []
+
 
 def fetch(start_date, end_date):
     return _get_records(
@@ -71,7 +76,9 @@ def fetch(start_date, end_date):
         datetime.strptime(end_date, "%Y-%m-%d")
     )
 
+
 if __name__ == "__main__":
     # quick test if this is working
     import json
-    print(json.dumps(fetch("2016-01-01","2016-01-10")))
+
+    print(json.dumps(fetch("2016-01-01", "2016-01-10")))
