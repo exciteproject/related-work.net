@@ -5,7 +5,7 @@ function loadResults(query) {
     $("#loader").show();
     $("#ul_results").empty();
     $("#title_q").text(query);
-    window.history.pushState('Page', 'Title', '/search/#' + query);
+    window.history.pushState('Page', 'Title', '/#' + query);
     $.get("/search_arxiv/" + query, function (data, status) {
         $("#loader").hide();
         if (data.length == 0) {
