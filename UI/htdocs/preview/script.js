@@ -67,6 +67,12 @@ $(document).ready(function () {
     $("#form_search").submit(function( event ) {
         var query = $("#q").val();
         event.preventDefault();
-        window.open('/search/#' + query,'_self',false);
+        window.open('/#' + query,'_self',false);
     });
+    $("#form_nopreview").submit(function( event ) {
+        var id = window.location.hash.substring(1);
+        event.preventDefault();
+        window.open('/no_preview/#' + id,'_self',false);
+    });
+
 });

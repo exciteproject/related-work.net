@@ -1,4 +1,4 @@
-window.onhashchange = function() {
+window.onhashchange = function () {
     loadid(window.location.hash.substring(1) || "1305.2467");
 };
 function loadid(id) {
@@ -25,9 +25,9 @@ function loadid(id) {
                 $('<li>').append(
                     $('<a>').text('[' + data[i].meta_id_source + '] :: ' + data[i].author + ", ").append(
                         $('<em>').text(data[i].title))).click(data[i].meta_id_source, loadev).append(
-                        $('<br>')
-                    ).append('Reference: "' + data[i].ref_text + '"')
-                );
+                    $('<br>')
+                ).append('Reference: "' + data[i].ref_text + '"')
+            );
         }
     });
     $.get("/references/" + id, function (data, status) {
@@ -45,9 +45,9 @@ function loadid(id) {
                 );
             } else {
                 reflist.append(
-                $('<li>').append(
-                    $('<a>').text('[' + data[i].meta_id_target + '] :: ' + data[i].author + ", ").append(
-                        $('<em>').text(data[i].title))).click(data[i].meta_id_target, loadev).append(
+                    $('<li>').append(
+                        $('<a>').text('[' + data[i].meta_id_target + '] :: ' + data[i].author + ", ").append(
+                            $('<em>').text(data[i].title))).click(data[i].meta_id_target, loadev).append(
                         $('<br>')
                     ).append('Reference: "' + data[i].ref_text + '"')
                 );
@@ -62,5 +62,16 @@ function loadev(ev) {
 }
 $(document).ready(function () {
     loadid(window.location.hash.substring(1) || "1305.2467");
+
+    $("#form_search").submit(function (event) {
+        var query = $("#q").val();
+        event.preventDefault();
+        window.open('/#' + query, '_self', false);
+    });
+    $("#form_nopreview").submit(function (event) {
+        var id = window.location.hash.substring(1);
+        event.preventDefault();
+        window.open('/no_preview/#' + id, '_self', false);
+    });
 });
 

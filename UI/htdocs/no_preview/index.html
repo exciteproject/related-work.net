@@ -1,42 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Related-Work.net</title>
-    <link rel="stylesheet" type="text/css" href="/no_preview/style.css"/>
+<html class=".grid">
+<head>
     <script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="/no_preview/script.js"></script>
-  </head>
-  <body>
-    <div id='headder'>
-      <h1 style='display:inline'> <a href='/'>Related-Work.net</a> </h1>
-      <h2 style='display:inline'> > arxiv > <a href='#' id='meta_id'> </a> </h2>
-      <div style='display:inline; float:right; line-height:100%;'>
-        <form action="/search" method="get" style='margin:5 0 0 0'>
-          <input name="q" type="text" size="20"/>
-          <input type="submit" value="search"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Related-Work.net</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body class=".grid">
+<div id="header" class="grid">
+    <div id="header_title">
+        <h1><a href='/'>Related-Work.net</a> / </h1>
+        <a id="meta_id"></a> :: <span class="author"></span><span class="title"></span>
+    </div>
+    <div id="header_nopreview">
+        <form id="form_nopreview" action="#" method="get">
+            <input type="submit" value="Disable PDF preview">
         </form>
-      </div>
     </div>
-    <div id="body">
-      <div id="meta">
-        <h1 id="title"></h1>
-        <h2 id="author"></h2>
-        <div id="abstract">
-          <h2 class="abstract">Abstract:</h2>
-          <p id="p_abstract"></p>
+    <div id="header_search">
+        <form id="form_search" action="#" method="get">
+            <input id="q" name="q" type="text" size="20">
+            <input type="submit" value="search"/>
+        </form>
+    </div>
+</div>
+<div id="body" class="grid">
+    <div id="left" class="grid">
+        <div id="leftwrap">
+            <div class="references">
+                <h2>Meta Data</h2>
+                <ul>
+                    <li>Author :: <span class="author"></span></li>
+                    <li>Title :: <span class="title"></span></li>
+                </ul>
+            </div>
+            <div class="references">
+                <h2>Cited by</h2>
+                <ul id="ul_citations">
+                </ul>
+            </div>
+            <div class="references">
+                <h2>References</h2>
+                <ol id="ul_references">
+                </ol>
+            </div>
         </div>
-      </div>
-      <div class="references">
-        <h2>Cited by</h2>
-        <ul id="ul_citations">
-        </ul>
-      </div>
-      <div class="references">
-        <h2>References</h2>
-        <ul id="ul_references">
-        </ul>
-      </div>
     </div>
+</div>
 </body>
 </html>

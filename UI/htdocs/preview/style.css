@@ -4,8 +4,8 @@
 */
 * {
     -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
@@ -23,13 +23,17 @@ body {
 }
 
 a:link {
-    color:#000070; text-decoration:none;
+    color: #000070;
+    text-decoration: none;
 }
+
 a:hover {
-    text-decoration:underline;
+    text-decoration: underline;
 }
+
 a:visited {
-    color:#551A8B; text-decoration:none;
+    color: #551A8B;
+    text-decoration: none;
 }
 
 h1 {
@@ -45,9 +49,9 @@ h2 {
 
 #abstract {
     width: 100%;
-    text-align:justify;
+    text-align: justify;
     font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
-    line-height:140%;
+    line-height: 140%;
 }
 
 h2.abstract {
@@ -61,29 +65,33 @@ h2.abstract {
 
 .references {
     line-height: 120%;
-    text-align:left;
-    float:left;
-    width:100%;
-} 
+    text-align: left;
+    float: left;
+    width: 100%;
+}
 
 .references ul {
     margin: 0;
 }
+
 .references ol {
     margin: 0;
 }
+
 .references li {
     margin-top: 10px;
 }
 
 .grid {
-    margin:0px;
-    padding:0px;
-    overflow:hidden
+    margin: 0;
+    padding: 0;
+    overflow: hidden
 }
+
 div.grid {
-    position:absolute
+    position: absolute
 }
+
 #header h1,
 #header h2 {
     display: inline;
@@ -95,32 +103,38 @@ div#header {
     border-width: 1px;
     background-color: #EEEEEE;
     height: 53px;
-    top:0px;left:0px;right:0px;
+    top: 0;
+    left: 0;
+    right: 0;
     /* force text on one line */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 div#body {
-    top:53px;
-    left:0px;
-    right:0px;
-    bottom:0px;
+    top: 53px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
+
 div#left {
-    top:0px;
-    bottom:0px;
-    left:0px;
-    width:50%;
-    overflow-y:auto
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    overflow-y: auto
 }
+
 div#right {
-    top:0px;
-    bottom:0px;
-    right:0px;
-    width:50%;
-    overflow-y:auto
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    overflow-y: auto
 }
+
 div#leftwrap {
     padding: 20px;
 }
@@ -142,8 +156,9 @@ div#leftwrap {
     width: 250px;
     padding: 0 10px;
 }
+
 #hright {
-    margin-left:230px;
+    margin-left: 230px;
 }
 
 #header_title {
@@ -151,12 +166,12 @@ div#leftwrap {
     float: left;
 }
 
-#header_search {
+#header_search, #header_nopreview {
     display: inline;
     float: right;
 }
 
-#form_search {
+#form_search, #form_nopreview {
     margin-top: 5px;
     margin-right: 5px;
 }
