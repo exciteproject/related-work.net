@@ -1,0 +1,133 @@
+/* 
+   Use sane box model:
+   http://learnlayout.com/box-sizing.html 
+*/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+
+}
+
+body {
+    height: 100%;
+    font-family: 'Lucida Grande', helvetica, arial, verdana, sans-serif;
+
+    font-size: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+a:link {
+    color: #000070;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #551A8B;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: x-large;
+    font-weight: bold;
+    line-height: 150%;
+    color: #551A8B;
+}
+
+h2 {
+    font-size: medium;
+    line-height: 180%;
+    color: #551A8B;
+
+}
+
+h2.abstract {
+    display: inline;
+    line-height: 100%;
+}
+
+.meta tbody {
+    vertical-align: top;
+}
+
+.grid {
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+}
+
+div.grid {
+    position: absolute
+}
+
+#header h1,
+#header h2 {
+    display: inline;
+}
+
+div#header {
+    padding: 8px;
+    border-style: none none dotted none;
+    border-width: 1px;
+    background-color: #EEEEEE;
+    height: 53px;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* force text on one line */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div#body {
+    top: 53px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+div#leftwrap {
+    padding: 20px;
+}
+
+#hleft {
+    position: absolute;
+    left: 0;
+    width: 250px;
+    padding: 0 10px;
+}
+
+#hright {
+    margin-left: 230px;
+}
+
+#header_title {
+    display: inline;
+    float: left;
+}
+
+#header_search, #header_nopreview {
+    display: inline;
+    float: right;
+}
+
+#form_search, #form_nopreview {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#content {
+    display: block;
+    width: 20%;
+    margin: auto;
+}
