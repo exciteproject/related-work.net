@@ -9,5 +9,5 @@ if __name__ == '__main__':
     tomorrow = datetime.date.today() + datetime.timedelta(days=1)
     tomorrow = tomorrow.strftime("%Y-%m-%d")
     target = "/EXCITE/datasets/arxiv/meta_daily/"
-    fetch_arxiv_meta.delay(target, today, tomorrow)
+    fetch_arxiv_meta.delay(today, tomorrow, target)
 

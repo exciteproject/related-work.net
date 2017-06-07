@@ -40,13 +40,15 @@ from store_fs import store as store_fs
 
 
 @app.task
-def fetch_arxiv_meta(target="/EXCITE/datasets/arxiv/meta/", *args):
+def fetch_arxiv_meta(date_from, date_to, target="/export/home/dkostic/arxiv/meta/"):
+    # target = "/EXCITE/datasets/arxiv/meta/"
+
     s = store_fs(target)
-    key = ":".join(args)
+    key = ":".join([date_from, date_to])
     if s.exists(key):
         return "Done Already"
     else:
-        s.set(key, _fetch(*args))
+        s.set(key, _fetch(date_from, date_to))
         return "OK"
 
 
@@ -202,4 +204,3 @@ if __name__ == "__main__":
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
     # schedule_ref_matching()
-
