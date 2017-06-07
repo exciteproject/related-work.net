@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals, print_function
 import sys
 import os
 import subprocess
+import json
 
 from celery import Celery
 
@@ -188,8 +189,11 @@ def layout_extract_from_pdf(file_name):
     result = subprocess.run(command, stdout=subprocess.PIPE, input=input.encode(), shell=True)
     tsv = result.stdout.decode('utf-8')
     for line in tsv:
-        if line[0] != "[":
-            store_refs_pdf.queue_ref(meta_id, line)
+        if line[0] == "{":
+            reference = json.loads(line)
+            meta_id = reference["name"]
+            for ref in reference["references"]:
+                store_refs_pdf.queue_ref(meta_id, ref)
     store_refs_pdf.flush()
     log("Wrote {} references".format(len(tsv)))
 
