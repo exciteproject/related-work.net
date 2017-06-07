@@ -1,7 +1,6 @@
 import time
 import datetime
 import sys
-sys.path.append('/export/home/dkostic/related-work.net/DataImport')
 from capp import fetch_arxiv_meta
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ except:
 
 import sys
 sys.path.append('../tools')
-import pymagic.magic as magic
+import magic
 FileTypeDetector = magic.Magic()
 
 def gz_extract(gz_path):
