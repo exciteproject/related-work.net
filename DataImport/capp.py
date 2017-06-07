@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals, print_function
 import sys
 import os
+import subprocess
 
 from celery import Celery
 
@@ -114,9 +115,6 @@ def schedule_bucket_extract():
         bucket_extract.delay(entry.name)
 
 
-import subprocess
-
-
 def run(command):
     p = subprocess.Popen(command,
                          stdout=subprocess.PIPE,
@@ -170,6 +168,37 @@ def schedule_ref_extract():
         ref_extract.delay(name)
 
 
+from store_refs_pdf_pg import store as store_r_pdf
+
+store_refs_pdf = False
+
+
+@app.task
+def layout_extract_from_pdf(file_name):
+    global store_refs_pdf
+    if not store_refs_pdf:
+        store_refs_pdf = store_r_pdf(user="rw", database="rw")
+    meta_id = file_name[:-4]
+
+    os.chdir("/export/home/dkostic/refext")
+    input = '{"inputFilePath":"/EXCITE/scratch/eval/amsd2017/pdf-crop/{}","isPdfFile":true}'.format(file_name)
+    command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.StandardInOutExtractor"' \
+              ' -Dexec.args="-crfModel' \
+              ' /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser"'
+    result = subprocess.run(command, stdout=subprocess.PIPE, input=input.encode(), shell=True)
+    tsv = result.stdout.decode('utf-8')
+    for line in tsv:
+        if line[0] != "[":
+            store_refs_pdf.queue_ref(meta_id, line)
+    store_refs_pdf.flush()
+    log("Wrote {} references".format(len(tsv)))
+
+
+@app.task
+def ref_extract_from_layout():
+    pass
+
+
 # Reference matching
 from store_matches_pg import store as store_matches
 from Matching.MatchScript import Match
@@ -195,12 +224,14 @@ def schedule_ref_matching():
 
 
 if __name__ == "__main__":
+    pass
     # print(fetch_arxiv_meta(("2010-06-01","2010-07-01")))
     # print(fetch_arxiv_meta.delay("2017-01-01","2017-02-01"))
-    schedule_fetch_arxiv_meta([("2017-05-06", "2017-05-08")])
+    # schedule_fetch_arxiv_meta([("2017-05-06", "2017-05-08")])
     # insert_arxiv_meta_bucket("2012-04-01:2012-05-01")
     # schedule_insert_arxiv_meta_bucket()
     # schedule_bucket_extract()
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
     # schedule_ref_matching()
+    layout_extract_from_pdf.delay("109-12826.pdf")
