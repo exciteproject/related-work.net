@@ -175,20 +175,30 @@ store_refs_pdf = False
 
 
 @app.task
-def layout_extract_from_pdf(file_names):
+def layout_extract_from_pdf(file_names, file_loc):
+    os.chdir("/export/home/dkostic/refext")
+    cmd_input = [
+        '{{"inputFilePath":"{}/{}", "outputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(file_loc, name, name) for name in file_names]
+    cmd_input = '\n'.join(cmd_input)
+    command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutLayoutExtractor"'
+    result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
+    print(result.stdout.decode('utf-8'))
+    print("Layout extraction finished. Number of files: {}".format(len(file_names)))
+
+
+@app.task
+def ref_extract_from_layout(file_names):
+    os.chdir("/export/home/dkostic/refext")
     global store_refs_pdf
     if not store_refs_pdf:
         store_refs_pdf = store_r_pdf(user="rw", database="rw")
-    # meta_id = file_name[:-4]
-
-    os.chdir("/export/home/dkostic/refext")
-    cmd_input = ['{"inputFilePath":"/EXCITE/scratch/eval/amsd2017/pdf-crop/{}","isPdfFile":true}'.format(name) for name in file_names]
+    cmd_input = ['{{"inputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(name, name) for name in file_names]
     cmd_input = '\n'.join(cmd_input)
-    command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.StandardInOutExtractor"' \
-              ' -Dexec.args="-crfModel' \
-              ' /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser"'
+    command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutReferenceExtractor"  ' \
+              '-Dexec.args="-crfModel /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser" -q'
     result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
     tsv = result.stdout.decode('utf-8')
+    print(tsv)
     for line in tsv:
         if line[0] == "{":
             reference = json.loads(line)
@@ -199,9 +209,16 @@ def layout_extract_from_pdf(file_names):
     log("Wrote {} references".format(len(tsv)))
 
 
-@app.task
-def ref_extract_from_layout():
-    pass
+def schedule_layout_from_pdf(path="/EXCITE/datasets/arxiv/pdfs/0001"):
+    src = Path(path)
+    files = [name.name for name in src.iterdir()]
+    layout_extract_from_pdf(files, path)
+
+
+def schedule_ref_from_layout(path="/EXCITE/datasets/arxiv/pdfs/0001"):
+    src = Path(path)
+    files = [name.name for name in src.iterdir()]
+    ref_extract_from_layout(files)
 
 
 # Reference matching
@@ -239,4 +256,6 @@ if __name__ == "__main__":
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
     # schedule_ref_matching()
-    layout_extract_from_pdf.delay("109-12826.pdf")
+    # layout_extract_from_pdf.delay("109-12826")
+    schedule_layout_from_pdf()
+    # schedule_ref_from_layout()
