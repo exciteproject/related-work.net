@@ -1,0 +1,1 @@
+\copy (SELECT row_to_json(t) FROM (select meta_id_source, ref_text, meta_id_target  from view_match) t) to '/EXCITE/datasets/arxiv/json_dump/test1.json';

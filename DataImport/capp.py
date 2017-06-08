@@ -72,9 +72,9 @@ from store_meta_pg import store as store_pg
 
 
 @app.task
-def insert_arxiv_meta_bucket(key):
+def insert_arxiv_meta_bucket(key, src_file="/EXCITE/datasets/arxiv/meta/"):
     log("Inserting bucket {}".format(key))
-    src = store_fs("/EXCITE/datasets/arxiv/meta/")
+    src = store_fs(src_file)
     dst = store_pg(database="rw", user="rw")
     n = 0
     for record in src.get(key):
