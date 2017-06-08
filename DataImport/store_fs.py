@@ -19,6 +19,7 @@ class store:
 
     def get(self, key):
         file = self.base / key
+        print(file)
         if not self.exists(key):
             return None
         with io.open(str(file), mode='rb') as fh:

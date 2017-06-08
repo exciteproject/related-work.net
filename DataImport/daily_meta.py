@@ -12,4 +12,5 @@ if __name__ == '__main__':
         target = "/EXCITE/datasets/arxiv/meta_daily/"
         print(fetch_arxiv_meta(today, tomorrow, target))
     elif arg == "insert":
-        print(insert_arxiv_meta_bucket(today, src_file="/EXCITE/datasets/arxiv/meta_daily_unpacked/"))
+        # year = today.split("-")[0]
+        print(insert_arxiv_meta_bucket(today, src_file="/EXCITE/datasets/arxiv/meta_daily/"))
