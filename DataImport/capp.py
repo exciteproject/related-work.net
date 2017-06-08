@@ -175,18 +175,19 @@ store_refs_pdf = False
 
 
 @app.task
-def layout_extract_from_pdf(file_name):
+def layout_extract_from_pdf(file_names):
     global store_refs_pdf
     if not store_refs_pdf:
         store_refs_pdf = store_r_pdf(user="rw", database="rw")
-    meta_id = file_name[:-4]
+    # meta_id = file_name[:-4]
 
     os.chdir("/export/home/dkostic/refext")
-    input = '{"inputFilePath":"/EXCITE/scratch/eval/amsd2017/pdf-crop/{}","isPdfFile":true}'.format(file_name)
+    cmd_input = ['{"inputFilePath":"/EXCITE/scratch/eval/amsd2017/pdf-crop/{}","isPdfFile":true}'.format(name) for name in file_names]
+    cmd_input = '\n'.join(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.StandardInOutExtractor"' \
               ' -Dexec.args="-crfModel' \
               ' /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser"'
-    result = subprocess.run(command, stdout=subprocess.PIPE, input=input.encode(), shell=True)
+    result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
     tsv = result.stdout.decode('utf-8')
     for line in tsv:
         if line[0] == "{":
