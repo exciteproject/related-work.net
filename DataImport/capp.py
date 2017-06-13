@@ -94,6 +94,16 @@ def schedule_insert_arxiv_meta_bucket():
         print(insert_arxiv_meta_bucket.delay(file))
 
 
+@app.task
+def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
+    url = "https://arxiv.org/pdf/" + arxiv_id + ".pdf"
+    command = "wget --user-agent=Lynx '" + url + "' -P " + target
+    result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+    # print(result.stdout.decode('utf-8'))
+
+
+
+
 # Extract Buckets
 from pathlib import Path
 from subprocess import call
@@ -180,6 +190,7 @@ def layout_extract_from_pdf(file_names, file_loc):
     cmd_input = [
         '{{"inputFilePath":"{}/{}", "outputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(file_loc, name, name) for name in file_names]
     cmd_input = '\n'.join(cmd_input)
+    print(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutLayoutExtractor"'
     result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
     print(result.stdout.decode('utf-8'))
@@ -194,6 +205,7 @@ def ref_extract_from_layout(file_names):
         store_refs_pdf = store_r_pdf(user="rw", database="rw")
     cmd_input = ['{{"inputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(name, name) for name in file_names]
     cmd_input = '\n'.join(cmd_input)
+    print(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutReferenceExtractor"  ' \
               '-Dexec.args="-crfModel /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser" -q'
     result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
@@ -201,6 +213,7 @@ def ref_extract_from_layout(file_names):
     print(tsv)
     for line in tsv:
         if line[0] == "{":
+            print(line)
             reference = json.loads(line)
             meta_id = reference["name"]
             for ref in reference["references"]:
@@ -212,6 +225,7 @@ def ref_extract_from_layout(file_names):
 def schedule_layout_from_pdf(path="/EXCITE/datasets/arxiv/pdfs/0001"):
     src = Path(path)
     files = [name.name for name in src.iterdir()]
+    print(files[:10])
     layout_extract_from_pdf(files, path)
 
 
