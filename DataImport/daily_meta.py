@@ -3,7 +3,9 @@ import datetime
 import os
 import sys
 import json
-from capp import fetch_arxiv_meta, insert_arxiv_meta_bucket, fetch_arxiv_pdf, fetch_arxiv_source, ref_extract_daily
+from pathlib import Path
+from capp import fetch_arxiv_meta, insert_arxiv_meta_bucket, fetch_arxiv_pdf, fetch_arxiv_source, ref_extract_daily, \
+    schedule_ref_matching
 
 if __name__ == '__main__':
     arg = sys.argv[1]
@@ -35,9 +37,18 @@ if __name__ == '__main__':
         for file in files:
             file_name = source_dest + file
             print(file_name)
+            if file_name[-3:] == "pdf":
+                print("File is pdf. " + file)
+                continue
             try:
                 ref_extract_daily(file_name)
             except IOError:
                 print("File should be a pdf" + file_name)
                 os.rename(file_name, file_name + '.pdf')
                 break
+    elif arg == "match_refs":
+        source_dest = "/EXCITE/datasets/arxiv/source_daily/" + today + "/"
+        os.chdir(source_dest)
+        files = os.listdir(".")
+        files = [file for file in files if file[-3:] != "pdf"]
+        schedule_ref_matching(files)

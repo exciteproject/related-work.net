@@ -193,7 +193,7 @@ def ref_extract_daily(file_name):
     log("Extracting references from: " + file_name)
     meta_id = Path(file_name).name[:-3]  # remove .gz
     refs = RefExtract(file_name)
-    print(refs)
+    # print(refs)
     for ref in refs:
         dst.queue_ref(meta_id, ref)
     dst.flush()
@@ -274,12 +274,17 @@ def ref_matching(meta_id, ref_text, ref_id):
         if len(mst.q) % 1000 == 0:
             print("DB flush - matches")
             mst.flush()
+    mst.flush()
 
 
-def schedule_ref_matching():
+def schedule_ref_matching(meta_ids):
     refs = store_refs(user="rw", database="rw")
-    for reference in refs.get_all_references():
-        ref_matching.delay(reference[0], reference[1], reference[2])
+    if len(meta_ids) > 0:
+        references = refs.get_many(meta_ids)
+    else:
+        references = refs.get_all_references()
+    for reference in references:
+        ref_matching(reference[0], reference[1], reference[2])
 
 
 if __name__ == "__main__":
@@ -292,7 +297,7 @@ if __name__ == "__main__":
     # schedule_bucket_extract()
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
-    # schedule_ref_matching()
+    # schedule_ref_matching([])
     # layout_extract_from_pdf.delay("109-12826")
     schedule_layout_from_pdf()
     # schedule_ref_from_layout()

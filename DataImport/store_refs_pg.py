@@ -26,6 +26,10 @@ SQL_GET = """
 SELECT * FROM refs WHERE meta_id_source = %s;
 """
 
+SQL_GET_MANY = """
+SELECT * FROM refs WHERE meta_id_source IN %s;
+"""
+
 SQL_DELETE = """
 DELETE FROM refs WHERE meta_id_source = %s;
 """
@@ -53,7 +57,7 @@ class store:
     def flush(self):
         "Write out queue to DB"
         n = len(self.q)
-        cursor2 = self.con.cursor()
+        cursor2 = self.con.cursor()  # replaced named cursor with a new cursor
         cursor2.executemany(SQL_INSERT, self.q)
         self.con.commit()
         self.q = [] # clear queue
@@ -62,6 +66,11 @@ class store:
     def get(self, meta_id_source):
         "Lookup citations for a paper"
         self.cur.execute(SQL_GET, (meta_id_source,))
+        return self.cur.fetchall()
+
+    def get_many(self, meta_id_list):
+        "Lookup citations for a paper"
+        self.cur.execute(SQL_GET_MANY, (tuple(meta_id_list),))
         return self.cur.fetchall()
 
     def get_all_references(self):
