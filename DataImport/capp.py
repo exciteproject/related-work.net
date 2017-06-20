@@ -193,6 +193,7 @@ def ref_extract_daily(file_name):
     log("Extracting references from: " + file_name)
     meta_id = Path(file_name).name[:-3]  # remove .gz
     refs = RefExtract(file_name)
+    print(refs)
     for ref in refs:
         dst.queue_ref(meta_id, ref)
     dst.flush()
@@ -212,7 +213,7 @@ def layout_extract_from_pdf(file_names, file_loc):
                                                                                                       name) for name in
         file_names]
     cmd_input = '\n'.join(cmd_input)
-    print(cmd_input)
+    # print(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutLayoutExtractor"'
     result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
     print(result.stdout.decode('utf-8'))
