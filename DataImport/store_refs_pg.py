@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS refs;
 
 SQL_INSERT = """
 INSERT INTO refs(meta_id_source, ref_text)
-VALUES          (%s, %s)
+VALUES(%s, %s)
 ON CONFLICT DO NOTHING;
 """
 
@@ -34,7 +34,7 @@ class store:
     def __init__(self, **kwargs):
         self.con = psycopg2.connect(**kwargs)
         self.cur = self.con.cursor('server-cursor')
-        self.q   = [] # fresh list
+        self.q = []  # fresh list
 
     def table_create(self):
         self.cur.execute(SQL_CREATE)
@@ -53,7 +53,8 @@ class store:
     def flush(self):
         "Write out queue to DB"
         n = len(self.q)
-        self.cur.executemany(SQL_INSERT, self.q)
+        cursor2 = self.con.cursor()
+        cursor2.executemany(SQL_INSERT, self.q)
         self.con.commit()
         self.q = [] # clear queue
         return self.cur.statusmessage
@@ -85,4 +86,5 @@ if __name__ == "__main__":
     print(s.flush())
     print(s.get("test-id"))
     print(s.delete("test-id"))
+    print(s.get("test-id"))
     print(s.close())

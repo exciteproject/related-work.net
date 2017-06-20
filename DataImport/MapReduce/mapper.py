@@ -48,7 +48,7 @@ def fill_queue(gz_queue):
         queued[f_path] = 1
         counter += 1
 
-    print "%d files in Queue. Added %d. " % (gz_queue.qsize(), counter)
+    print("%d files in Queue. Added %d. " % (gz_queue.qsize(), counter))
         
 def worker(gz_queue):
     while True:
@@ -61,7 +61,7 @@ def worker(gz_queue):
             wh.write(ref_text)
             wh.close()
         except IOError as e:
-            print "Error processing", gz_path, e
+            print("Error processing", gz_path, e)
             continue
 
         try:

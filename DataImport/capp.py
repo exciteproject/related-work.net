@@ -99,9 +99,16 @@ def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
     url = "https://arxiv.org/pdf/" + arxiv_id + ".pdf"
     command = "wget --user-agent=Lynx '" + url + "' -P " + target
     result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+
     # print(result.stdout.decode('utf-8'))
 
 
+@app.task
+def fetch_arxiv_source(arxiv_id, target="/EXCITE/datasets/arxiv/source_daily"):
+    url = "https://arxiv.org/e-print/" + arxiv_id
+    command = "wget --user-agent=Lynx '" + url + "' -P " + target
+    result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+    print(result.stdout.decode('utf-8'))
 
 
 # Extract Buckets
@@ -156,7 +163,7 @@ def shutdown_worker(**kwargs):
 
 
 @app.task
-def ref_extract(gz_name):
+def ref_extract_s3(gz_name):
     global dst
     if not dst:
         dst = store_refs(user="rw", database="rw")
@@ -176,7 +183,20 @@ def schedule_ref_extract():
     find /EXCITE/datasets/arxiv/paper -type f -name '*.gz'
     """):
         log("Scheduling ref extraction: " + name)
-        ref_extract.delay(name)
+        ref_extract_s3.delay(name)
+
+
+def ref_extract_daily(file_name):
+    global dst
+    if not dst:
+        dst = store_refs(user="rw", database="rw")
+    log("Extracting references from: " + file_name)
+    meta_id = Path(file_name).name[:-3]  # remove .gz
+    refs = RefExtract(file_name)
+    for ref in refs:
+        dst.queue_ref(meta_id, ref)
+    dst.flush()
+    log("Wrote {} references".format(len(refs)))
 
 
 from store_refs_pdf_pg import store as store_r_pdf
@@ -188,7 +208,9 @@ store_refs_pdf = False
 def layout_extract_from_pdf(file_names, file_loc):
     os.chdir("/export/home/dkostic/refext")
     cmd_input = [
-        '{{"inputFilePath":"{}/{}", "outputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(file_loc, name, name) for name in file_names]
+        '{{"inputFilePath":"{}/{}", "outputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(file_loc, name,
+                                                                                                      name) for name in
+        file_names]
     cmd_input = '\n'.join(cmd_input)
     print(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutLayoutExtractor"'

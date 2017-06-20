@@ -14,7 +14,7 @@ out_file = '../DATA/ALL_REF.txt'
 
 while True:
     files = os.listdir(dir_name)
-    print "Reducing %d files" % len(files)
+    print("Reducing %d files" % len(files))
     # Concatenate files
     out = ''
     for file_name in files:
