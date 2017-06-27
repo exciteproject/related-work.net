@@ -245,14 +245,23 @@ def ref_extract_from_layout(file_names):
     log("Wrote {} references".format(len(tsv)))
 
 
-def schedule_layout_from_pdf(path="/EXCITE/datasets/arxiv/pdfs/0001"):
+def chunks(input_list, n):
+    for i in range(0, len(input_list), n):
+        yield input_list[i:i + n]
+
+
+def schedule_layout_from_pdf(path="/EXCITE/datasets/arxiv/pdfs/"):
     src = Path(path)
-    files = [name.name for name in src.iterdir()]
-    print(files[:10])
-    layout_extract_from_pdf(files, path)
+    folders = [name.name for name in src.iterdir()]
+    for folder in folders:
+        fold = Path(path + folder)
+        files = [name.name for name in fold.iterdir()]
+        split_files = list(chunks(files, 150))
+        for split in split_files:
+            layout_extract_from_pdf(split, path + folder)
 
 
-def schedule_ref_from_layout(path="/EXCITE/datasets/arxiv/pdfs/0001"):
+def schedule_ref_from_layout(path="/EXCITE/datasets/arxiv/pdfs/"):
     src = Path(path)
     files = [name.name for name in src.iterdir()]
     ref_extract_from_layout(files)
@@ -288,7 +297,6 @@ def schedule_ref_matching(meta_ids):
 
 
 if __name__ == "__main__":
-    pass
     # print(fetch_arxiv_meta(("2010-06-01","2010-07-01")))
     # print(fetch_arxiv_meta.delay("2017-01-01","2017-02-01"))
     # schedule_fetch_arxiv_meta([("2017-05-06", "2017-05-08")])
