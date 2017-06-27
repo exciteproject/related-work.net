@@ -1,6 +1,6 @@
-[related-work.net](http://related-work.net) is a project by [Heinrich Hartmann](http://www.heinrichhartmann.com) and and [Rene Pickhardt](http://www.rene-pickhardt.de) 
+[related-work.net](http://related-work.net) is a project by [Heinrich Hartmann](http://www.heinrichhartmann.com) and [Rene Pickhardt](http://www.rene-pickhardt.de) 
 
-The goal is to make scientific data better accessable and the whole publishing and reviewing process more transparent and open.
+The goal is to make scientific data better accessible and the whole publishing and reviewing process more transparent and open.
 
 All of the source code and the collected data is available under a public license.
 
