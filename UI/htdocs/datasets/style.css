@@ -131,3 +131,7 @@ div#leftwrap {
     width: 20%;
     margin: auto;
 }
+
+ul > li {
+    list-style-type: none;
+}
