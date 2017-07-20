@@ -3,6 +3,8 @@ import sys
 import os
 import subprocess
 import json
+from json.decoder import JSONDecodeError
+import traceback
 
 from celery import Celery
 
@@ -205,6 +207,8 @@ from store_refs_pdf_pg import store as store_r_pdf
 store_refs_pdf = False
 
 
+# Martins work
+
 @app.task
 def layout_extract_from_pdf(file_names, file_loc):
     os.chdir("/export/home/dkostic/refext")
@@ -226,23 +230,29 @@ def ref_extract_from_layout(file_names):
     global store_refs_pdf
     if not store_refs_pdf:
         store_refs_pdf = store_r_pdf(user="rw", database="rw")
-    cmd_input = ['{{"inputFilePath":"/EXCITE/datasets/arxiv_layout/{}.tsv"}}'.format(name, name) for name in file_names]
+    cmd_input = ['{{"inputFilePath":"/EXCITE/datasets/arxiv_layout/{}"}}'.format(name, name) for name in file_names]
     cmd_input = '\n'.join(cmd_input)
-    print(cmd_input)
+    # print(cmd_input)
     command = 'mvn exec:java -Dexec.mainClass="de.exciteproject.refext.io.StandardInOutReferenceExtractor"  ' \
               '-Dexec.args="-crfModel /EXCITE/scratch/eval/amsd2017/git/amsd2017/evaluation/refext/trained/0/models/model.ser" -q'
     result = subprocess.run(command, stdout=subprocess.PIPE, input=cmd_input.encode(), shell=True)
     tsv = result.stdout.decode('utf-8')
-    print(tsv)
-    for line in tsv:
-        if line[0] == "{":
-            print(line)
-            reference = json.loads(line)
-            meta_id = reference["name"]
-            for ref in reference["references"]:
+    tsv = tsv.rstrip('\n')
+    for line in tsv.split('\n'):
+        try:
+            output = json.loads(line)
+            filename = output['inputFilePath']
+            references = output['references']
+            meta_id = os.path.basename(filename)[:-8]
+            for ref in references:
                 store_refs_pdf.queue_ref(meta_id, ref)
+        except JSONDecodeError:
+            print("Failed to decode: ")
+            print(line)
+            traceback.print_exc()
+            store_refs_pdf.flush()
     store_refs_pdf.flush()
-    log("Wrote {} references".format(len(tsv)))
+    print("Finished writing references")
 
 
 def chunks(input_list, n):
@@ -261,7 +271,7 @@ def schedule_layout_from_pdf(path="/EXCITE/datasets/arxiv/pdfs/"):
             layout_extract_from_pdf(split, path + folder)
 
 
-def schedule_ref_from_layout(path="/EXCITE/datasets/arxiv/pdfs/"):
+def schedule_ref_from_layout(path="/EXCITE/datasets/arxiv_layout/"):
     src = Path(path)
     files = [name.name for name in src.iterdir()]
     ref_extract_from_layout(files)
@@ -293,7 +303,7 @@ def schedule_ref_matching(meta_ids):
     else:
         references = refs.get_all_references()
     for reference in references:
-        ref_matching(reference[0], reference[1], reference[2])
+        ref_matching.delay(reference[0], reference[1], reference[2])
 
 
 if __name__ == "__main__":
@@ -307,5 +317,6 @@ if __name__ == "__main__":
     # schedule_ref_extract()
     # schedule_ref_matching([])
     # layout_extract_from_pdf.delay("109-12826")
-    schedule_layout_from_pdf()
-    # schedule_ref_from_layout()
+    # schedule_layout_from_pdf()
+    schedule_ref_from_layout()
+    # pass

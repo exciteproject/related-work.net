@@ -6,7 +6,7 @@ import psycopg2
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS refs_pdf (
-  ref_id VARCHAR(50) PRIMARY KEY, -- Auto increment field
+  ref_id serial PRIMARY KEY, -- Auto increment field
   meta_id_source VARCHAR(50),  -- Meta id of the paper containing the reference
   ref_text TEXT  -- Reference text
 );
@@ -30,11 +30,12 @@ SQL_DELETE = """
 DELETE FROM refs_pdf WHERE meta_id_source = %s;
 """
 
+
 class store:
     def __init__(self, **kwargs):
         self.con = psycopg2.connect(**kwargs)
-        self.cur = self.con.cursor('server-cursor')
-        self.q   = [] # fresh list
+        self.cur = self.con.cursor()
+        self.q = []  # fresh list
 
     def table_create(self):
         self.cur.execute(SQL_CREATE)
@@ -55,7 +56,7 @@ class store:
         n = len(self.q)
         self.cur.executemany(SQL_INSERT, self.q)
         self.con.commit()
-        self.q = [] # clear queue
+        self.q = []  # clear queue
         return self.cur.statusmessage
 
     def get(self, meta_id_source):
