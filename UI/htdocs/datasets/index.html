@@ -23,26 +23,30 @@
         <h1>Download our datasets</h1>
         <h2>Arxiv</h2>
         <ul>
+            <h2>Arxiv metadata</h2>
             <p>
                 This is a mirror of the meta of preprints at <a href="https://arxiv.org">Arxiv</a>,
                 as provided by the OAI API in oai_dc format. Downloading full dataset from the API is a very slow.
                 We think that git provides a much nicer way to share data sets of limited size (<1Gb) like this one.
             </p>
             <li><a href="https://github.com/exciteproject/arxiv_meta">Arxiv metadata mirror</a></li>
+            <h2>Arxiv matched references</h2>
             <p>
                 Using latex source we matched all extracted references to our database. This file contains all matched references.
                 The format is one JSON per line, and every line contains three fields: [meta_id_source, ref_text, meta_id_target]
                 Number of entries: 39.069.913
             </p>
-            <li><a href="/arxiv_datasets/json_dump.tar.gz">Arxiv extracted references</a></li>
+            <li><a href="/arxiv_datasets/json_dump.tar.gz">Arxiv matched references link</a></li>
+            <h2>Arxiv PDF Hashes</h2>
             <p>
                 Every downloaded arxiv PDF has been hashed with sha1, md5 and sha256. File format is one JSON per line,
                 and every line contains 3 hashes and an arxiv id of the paper.
             </p>
-            <li><a href="https://github.com/exciteproject/arxiv_pdf_hashes">Arxiv PDF Hashes</a></li>
+            <li><a href="https://github.com/exciteproject/arxiv_pdf_hashes">Arxiv PDF Hashes link</a></li>
         </ul>
         <h2>SSOAR</h2>
         <ul>
+            <h2> SSOAR Gold Standard </h2>
             <p>
                 This repository contains manually inspected datasets for evaluating the different steps during the
                 reference extraction process. All datasets consist of research papers in German and come from the
