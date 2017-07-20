@@ -71,7 +71,7 @@ $(document).ready(function () {
     $("#form_nopreview").submit(function (event) {
         var id = window.location.hash.substring(1);
         event.preventDefault();
-        window.open('/no_preview/#' + id, '_self', false);
+        window.open('/preview/#' + id, '_self', false);
     });
 });
 
