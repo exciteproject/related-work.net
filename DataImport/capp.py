@@ -4,6 +4,7 @@ import os
 import subprocess
 import json
 from json.decoder import JSONDecodeError
+import time
 import traceback
 
 from celery import Celery
@@ -52,7 +53,8 @@ def fetch_arxiv_meta(date_from, date_to, target="/export/home/dkostic/arxiv/meta
     if s.exists(key):
         return "Done Already"
     else:
-        s.set(key, _fetch(date_from, date_to))
+        res = _fetch(date_from, date_to)
+        s.set(key, res)
         return "OK"
 
 
@@ -98,19 +100,32 @@ def schedule_insert_arxiv_meta_bucket():
 
 @app.task
 def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
+    if os.path.exists(target + '/' + arxiv_id + '.pdf'):
+        print("PDF exists")
+        return
     url = "https://arxiv.org/pdf/" + arxiv_id + ".pdf"
-    command = "wget --user-agent=Lynx '" + url + "' -P " + target
-    result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
-
-    # print(result.stdout.decode('utf-8'))
+    command = 'wget -S --user-agent=Lynx "{}" -P {} 2>&1 | grep "HTTP/" | awk \'{{print $2}}\''.format(url, target)
+    for i in range(0,10):
+        result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+        if result.stdout.decode('utf-8').startswith("403"):
+            time.sleep(i*10)
+        else:
+            break
 
 
 @app.task
 def fetch_arxiv_source(arxiv_id, target="/EXCITE/datasets/arxiv/source_daily"):
+    if os.path.exists(target + '/' + arxiv_id):
+        print("Source exists")
+        return
     url = "https://arxiv.org/e-print/" + arxiv_id
-    command = "wget --user-agent=Lynx '" + url + "' -P " + target
-    result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
-    print(result.stdout.decode('utf-8'))
+    command = 'wget -S --user-agent=Lynx "{}" -P {} 2>&1 | grep "HTTP/" | awk \'{{print $2}}\''.format(url, target)
+    for i in range(0,10):
+        result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
+        if result.stdout.decode('utf-8').startswith("403"):
+            time.sleep(i*10)
+        else:
+            break
 
 
 # Extract Buckets
@@ -155,7 +170,7 @@ dst, mst = False, False
 def init_worker(**kwargs):
     global dst
     print('Initializing database connection for worker.')
-    dst = store_refs(user="rw", database="rw")
+    dst = store_refs(user="rw", database="rw", password="rw")
 
 
 @worker_shutdown.connect
@@ -286,7 +301,7 @@ from Matching.MatchScript import Match
 def ref_matching(meta_id, ref_text, ref_id):
     global mst
     if not mst:
-        mst = store_matches(user="rw", database="rw")
+        mst = store_matches(user="rw", database="rw", password="rw")
     match = Match(ref_text)
     if match:
         mst.queue_match(ref_id, match, meta_id)
@@ -297,13 +312,20 @@ def ref_matching(meta_id, ref_text, ref_id):
 
 
 def schedule_ref_matching(meta_ids):
-    refs = store_refs(user="rw", database="rw")
+    refs = store_refs(user="rw", database="rw", password="rw")
     if len(meta_ids) > 0:
         references = refs.get_many(meta_ids)
     else:
         references = refs.get_all_references()
     for reference in references:
         ref_matching.delay(reference[0], reference[1], reference[2])
+
+def schedule_ref_matching_daily(meta_ids):
+    refs = store_refs(user="rw", database="rw", password="rw")
+    if len(meta_ids) > 0:
+        references = refs.get_many(meta_ids)
+        for reference in references:
+            ref_matching(reference[0], reference[1], reference[2])
 
 
 if __name__ == "__main__":
@@ -315,8 +337,8 @@ if __name__ == "__main__":
     # schedule_bucket_extract()
     # print(ref_extract('/EXCITE/datasets/arxiv/paper/1310/1310.0623.gz'))
     # schedule_ref_extract()
-    # schedule_ref_matching([])
+    schedule_ref_matching([])
     # layout_extract_from_pdf.delay("109-12826")
     # schedule_layout_from_pdf()
-    schedule_ref_from_layout()
+    # schedule_ref_from_layout()
     # pass

@@ -5,7 +5,7 @@ import sys
 import json
 from pathlib import Path
 from capp import fetch_arxiv_meta, insert_arxiv_meta_bucket, fetch_arxiv_pdf, fetch_arxiv_source, ref_extract_daily, \
-    schedule_ref_matching
+schedule_ref_matching_daily
 
 if __name__ == '__main__':
     arg = sys.argv[1]
@@ -25,7 +25,8 @@ if __name__ == '__main__':
                 fetch_arxiv_pdf(entry[0])
     elif arg == "download_source":
         source_dest = "/EXCITE/datasets/arxiv/source_daily/" + today
-        os.mkdir(source_dest)
+        if not os.path.isdir(source_dest):
+            os.mkdir(source_dest)
         with open(file_loc + today) as meta_file:
             data = json.load(meta_file)
             for entry in data:
@@ -51,4 +52,4 @@ if __name__ == '__main__':
         os.chdir(source_dest)
         files = os.listdir(".")
         files = [file for file in files if file[-3:] != "pdf"]
-        schedule_ref_matching(files)
+        schedule_ref_matching_daily(files)
