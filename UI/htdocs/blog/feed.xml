@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2017-08-20T23:53:49+02:00</updated><id>http://localhost:4000/blog/</id><title type="html">Related-work.net</title><subtitle>Related-work.net citation network
+</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/blog/jekyll/update/2017/08/20/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-08-20T17:26:34+02:00</published><updated>2017-08-20T17:26:34+02:00</updated><id>http://localhost:4000/blog/jekyll/update/2017/08/20/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/jekyll/update/2017/08/20/welcome-to-jekyll.html">&lt;h1 id=&quot;hello-bicuri&quot;&gt;Hello Bicuri&lt;/h1&gt;
+
+&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello world&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Balea&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello Bicuri</summary></entry><entry><title type="html">Proposal</title><link href="http://localhost:4000/blog/proposal/2017/08/20/proposal.html" rel="alternate" type="text/html" title="Proposal" /><published>2017-08-20T17:26:34+02:00</published><updated>2017-08-20T17:26:34+02:00</updated><id>http://localhost:4000/blog/proposal/2017/08/20/proposal</id><content type="html" xml:base="http://localhost:4000/blog/proposal/2017/08/20/proposal.html">&lt;p&gt;by &lt;a href=&quot;http://heinrich-hartmann.net/&quot;&gt;Heinrich Hartmann&lt;/a&gt; and &lt;a href=&quot;http://rene-pickhardt.de/&quot;&gt;Rene Pickhardt&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+
+&lt;p&gt;We propose to create a new website for the scientific community which brings together people which are reading the same paper. The basic idea is to mix the functionality of a Q&amp;amp;A platform (like MathOverflow) with a paper database (like arXiv). We follow a strict openness principle by making available the source code and the data we collect.
+We start with an analysis how the internet is currently used in different fields and explain the shortcomings. The actual product description can be found under the section “Basic idea”. At the end we present an overview over the websites which follow a similar approach.
+This document – as well as the whole project – is work in progress. We are happy about any kind of comments or other contributions.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-distribution-of-scientific-knowledge&quot;&gt;The distribution of scientific knowledge&lt;/h2&gt;
+
+&lt;p&gt;Every scientist has to stay up to date with the developments in his area of research. The basic sources for finding new information are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Conferences&lt;/li&gt;
+  &lt;li&gt;Research Seminars&lt;/li&gt;
+  &lt;li&gt;Journals&lt;/li&gt;
+  &lt;li&gt;Preprint-servers (arXiv)&lt;/li&gt;
+  &lt;li&gt;Review Databases (MathSciNet, Zentralblatt, …)&lt;/li&gt;
+  &lt;li&gt;Q&amp;amp;A Sites (MathOverflow, StackOverflow, …)&lt;/li&gt;
+  &lt;li&gt;Blogs&lt;/li&gt;
+  &lt;li&gt;Social Networks (Twitter, Google+)&lt;/li&gt;
+  &lt;li&gt;Bibliograhpic Databases (Mendeley, nNode, Medline, etc. )&lt;/li&gt;
+  &lt;li&gt;Every community has found its very own way of how to use these tools.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mathematics-by-heinrich-hartmann---oxford&quot;&gt;Mathematics by Heinrich Hartmann - Oxford:&lt;/h2&gt;
+
+&lt;p&gt;To stay up to date with recent developments I check arxiv.org on a daily basis (RSS feed) participate in mathoverflow.net and search for papers over Google Scholar or MathSciNet. Occasionally interesting work is shared by people in my Google+ circles. In general the speed of pure mathematics is very slow. New research often builds upon work which has been out for a few years. To stay reasonably up to date it is enough to go to conferences every 3-5 months.
+I read many papers by myself because I am &lt;strong&gt;the only one at the department who does research on that particular topic&lt;/strong&gt;. We have a reading class where we read papers/lecture notes which are relevant for more people. Usually they are concerned with introductions to certain kinds of theory. We have weekly seminars where people talk about their recently published work. There are some very active blogs by famous mathematicians, but in my area blogs play virtually no role.&lt;/p&gt;
+
+&lt;h2 id=&quot;computer-science-by-rené-pickhardt---uni-koblenz&quot;&gt;Computer Science by René Pickhardt - Uni Koblenz&lt;/h2&gt;
+
+&lt;p&gt;In Computer Science topics are evolving but also changing very quickly. It is always important to have both an overview of upcoming technologies (which you get from tech blogs) as well as access to current research trends.
+Since the speed in computer science is so fast and the review process in Journals often takes much time our main source of information and papers are conferences and twitter.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usually conference papers are distributed digitally to participants. If one is interested in those papers google queries like “conference name year papers” are frequently used. Sites like http://www.sciweavers.org/ host and aggregate preprints of papers and organize them by conference.&lt;/li&gt;
+  &lt;li&gt;The general method to follow a conference that one is not attending is to follow the hashtag of the conference on Twitter. In general Twitter is the most used tool to share distribute and find information not only for papers but also for the above mentioned news about upcoming technologies.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another rich source for computer scientists is, of course, the related work of papers and google scholar. Especially useful is the method of finding a very influential paper with more than 1000 citations and find newer papers that quote this paper containing a certain keyword which is one of the features of google scholar.
+The main problem in computer science is not to find a rare paper or idea but rather &lt;strong&gt;to filter the huge amount of publications&lt;/strong&gt; and also bad publications and also keepto fil track of trends. In this way a system that ranks and summarize papers (not only by abstract and citation counts) would help me a lot to select what related work of a paper I should read!&lt;/p&gt;
+
+&lt;h2 id=&quot;psychology-by-elisa-scheller---uni-freiburg&quot;&gt;Psychology by Elisa Scheller - Uni Freiburg&lt;/h2&gt;
+
+&lt;p&gt;As a psychologist/neuroscientist, I receive recommendations for scientific papers via google scholar alerts or science direct alerts (http://www.sciencedirect.com/); I receive alerts regarding keywords or regarding entire journal issues. When I search for a certain publication, I use pubmed.org or scholar.google.com. This can sometimes be kind of annoying, as I receive &lt;strong&gt;multiple alerts from different sources;&lt;/strong&gt; but I guess it is the best way to stay up to date regarding recent developments. This is especially important in my field, as we feel a big amount of “publication pressure”; I work on a method which is considered as “quite fancy” at the moment, so I also use the alerts to make sure nobody has published “my” experiment yet.
+Sometimes a facebook friend recommends a certain publication or a colleague points me to it. &lt;strong&gt;Most of the time, I read articles on my own, as I am the only person working on this specific topic&lt;/strong&gt; at my institution. Additionally, we have a weekly journal club where everyone in turn presents work which is related to our focus of research, e.g. a certain part of the human brain. There is also a weekly seminar dedicated to presentations about ongoing projects.
+Blogs (e.g. mindhacks.com, http://neuroskeptic.blogspot.com/) can be a source to get an overview about recent developments, but I have to admit I use them mainly for work-related entertainment.
+All in all, it is easy to stay up to date using alerts from different platforms;  the annoying part of it is the flood of emails you receive and that you are quite often alerted to articles that don’t fit your interests (no matter how exact you try to specify your keywords).&lt;/p&gt;
+
+&lt;h2 id=&quot;biomedical-research-by-johanna-goldmann---mit&quot;&gt;Biomedical Research by Johanna Goldmann - MIT&lt;/h2&gt;
+
+&lt;p&gt;In the biological sciences, in research at the bench – communication is one of the most fundamental tools a scientist can have. Communication with other scientist may open up the possibilities of new collaborations, can lead to a completely new view point of a known question, the integration and expansion of methods as well as allowing a scientist to have a good understanding of what is known, what is not known and what other people have – both successfully and unsuccessfully – tried to investigate.
+Yet &lt;strong&gt;communication is something that is currently very much lacking in academic science&lt;/strong&gt; – lacking to the extent that most scientist will agree hinders the progress of research. Nonetheless the lack of communication and the issues it brings with it is something that most scientists will have accepted as a necessary evil – not knowing how to possibly change it.
+Progress is only reported in peer-reviewed journals – many which are greatly affected not only but what is currently “sexy” in research but also by politics and connections and the “publish or perish” pressure. Due to the amount of this pressure in publishing in journals and the amount of weight the list of your publications will have upon any young scientists chances of success, scientist tend also to be very reluctant in sharing any information pre-publication.
+Furthermore one of the major issues is that currently &lt;strong&gt;there really is no way of publishing or communicating either negative results or minor findings&lt;/strong&gt;, which causes may questions or methods to be repeatedly investigated as well as a loss of information.
+Given how much social networks and the internet has changed communication as well as the access to information over the past years – there is a need for this change to affect research and communication in the life science and transform the way we think not only about solving and approaching research questions we gather but the information and insights we gain as a whole.&lt;/p&gt;
+
+&lt;h2 id=&quot;philosophy-by-sascha-benjamin-fink---uni-osnabrück&quot;&gt;Philosophy by Sascha Benjamin Fink - Uni Osnabrück&lt;/h2&gt;
+
+&lt;p&gt;The most important source of information for philosophers is http://philpapers.org/. You can follow trends going on in your field of interest. Philpapers has a list of almost all papers together with their abstracts, keywords and categories as well as a link to the publisher. Additional information about similar papers is displayed.
+Every category of papers is managed by some editor. For each category it is possible to subscribe to a newsletter. In this way once per month I will be informed about current publications in journals related to my topic of interest. Every User is able to create an account and manage his literature and the papers of his he is interested in.
+Other research and information exchange methods among philosophers consist of mailing lists, reading clubs and Blogs. Have a look at David Chalmers blog list. Blogs are also becoming more and more important. Unfortunately they are usually on general topics and discussing developments of the community (e.g. Leiter’s Blog, Chalmers’ Blog and Schwitzgebel’s Blog).
+But all together I still think that for me a centralized service like Philpapers is my favourite tool because it aggregates most information. If I don’t hear about it on Philpapers usually it is not that important. I think among Philosophers this platform – though incomplete – seems to be the standard for the next couple of years.&lt;/p&gt;
+
+&lt;h2 id=&quot;biophysics-by-daniel-mietchen--uni-jena&quot;&gt;Biophysics by Daniel Mietchen – Uni Jena&lt;/h2&gt;
+
+&lt;p&gt;There is no one-stop shop for biophysicists in terms of keeping abreast of developments in the field. Much of the research is of a methodological nature, and depending on where people in a given subfield tend to publish, that is where to look. I get most of my paper alerts via RSS feeds of saved searches – mostly from HubMed, arXiv, Google Blog search, Mendeley or Twitter – that I import into Friendfeed (examples: brain morphometry, music cognition, evolutionary MRI). In addition to that, I use a set of related Google alerts, I am subscribed to a number of mailing lists, and I heavily filter my emails, again for a similar set of search terms.&lt;/p&gt;
+
+&lt;p&gt;For broader topics, I am using social networks as a rough filter that is then refined through automated tools like Twitter Times. For events and some overarching topics (like Open Access), I also sometimes follow hashtags in places like Twitter or Google Plus.
+I am maintaining watchlists at a number of wikis that range from general-purpose sites like Wikipedia, OpenWetWare and Scholarpedia to more specialized environments like Species ID or NMR Wiki, and I am reading part of these via RSS feeds, others via email alerts or regular presence on the wiki.&lt;/p&gt;
+
+&lt;h2 id=&quot;problems&quot;&gt;Problems&lt;/h2&gt;
+
+&lt;p&gt;As a scientist it is crucial to be informed about the current developments in the research area. Abstracting from the reports above we divide the tasks roughly into the following stages.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finding and filtering new publications:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;What is happening right now? What are the current hot topics my area? What are current trends? (→ Check arXiv/Twitter)&lt;/li&gt;
+      &lt;li&gt;Did a friend of mine write something? Did a “big shot” write something?
+(→ Check meta information: title, authors)&lt;/li&gt;
+      &lt;li&gt;Are my colleagues excited about a new development? (→ Talk to them.)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Getting more information about a given paper:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;What is actually done in a given paper? Is it relevant for me? Is it really new? Is it a breakthrough? (→ Read abstracts. Find a good readable summary/review.)&lt;/li&gt;
+      &lt;li&gt;Judge the quality of a paper: Is it correct? Is it well written?
+( → Where is it published, if at all? Skim through content.)
+Finally there is a fundamental decision: Shall I read the whole paper, or not? which leads us to the next task.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Understanding a paper:&lt;/strong&gt; Understanding a paper in depth can be a very time consuming and tedious process. The presentation is often very short and much knowledge is assumed from the reader. The notation choices can be bad, so that even the statements are hard to understand. In effect the paper is easily readable only for a very small circle of specialist in the area. If one is not in the lucky situation to belong to that circle, one usually applies the following strategies:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;&lt;strong&gt;Lookup references.&lt;/strong&gt; This forces you to process a whole tree of older papers which might be hard to read, and hard to get hold of. Sometimes it is worthwhile to consult a textbook to polish up fundamentals.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Finding additional resources.&lt;/strong&gt; Is there a review? Is there a related video lecture or slides explaining the material in more detail? Is the author going to a conference in the near future, or even giving a seminar in the area?&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Join forces.&lt;/strong&gt; Find people thinking about the same paper: Has somebody at my department already read the paper, so that I can ask some questions? Is there enough interest to make a reading group, or more formally, run a seminar about that paper.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Contact the author.&lt;/strong&gt; This a last resort. If you have struggled with understanding the paper for a very long time and really need/want to get it, you might eventually write an email to the author – who might respond, or not. Sometimes even errors are found! – and not published! An indeed, there is no easy way to publish “errata” anywhere on the net.
+In mathematics most papers are not getting read though the end. One uses strategies 1 &amp;amp; 2 till one gets stuck and moves on to something more exciting. The chances of survival are much better with strategy 3 where one is committed putting a lot of effort in it over weeks.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Finding related work.&lt;/strong&gt; Where to go from there? Is the paper superseded by a more recent development? Which are the relevant papers which the author builds upon? What are the historic influences? What are the founding ideas of the subject? Finding related work is very time consuming. It is easy to overlook things given that the references are often vast, and sometimes hard to get hold of. Getting information over citations requires often access to commercial databases.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;basic-idea&quot;&gt;Basic idea:&lt;/h2&gt;
+
+&lt;p&gt;All researchers around the world are faced with the same problems and come up with their individual solutions. There are great synergies in bringing these people together with an online platform! Most of the addressed problems are solved with a paper centric service which allows you to…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;get to know other readers of the paper.&lt;/li&gt;
+  &lt;li&gt;exchange with the other readers: ask questions, write comments, reviews.&lt;/li&gt;
+  &lt;li&gt;share the gained insights with the community.&lt;/li&gt;
+  &lt;li&gt;ask questions about the paper.&lt;/li&gt;
+  &lt;li&gt;discuss the paper.&lt;/li&gt;
+  &lt;li&gt;review the paper.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We want to do that with a new mixture of a traditional Q&amp;amp;A system like StackExchange or MathOverflow with a paper database and social features. The key features of this system are as follows:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Openness:&lt;/strong&gt; We follow a strict openness principle. The software will be developed in &lt;strong&gt;open source.&lt;/strong&gt; All data generated on this site will be under a &lt;strong&gt;creative commons license&lt;/strong&gt; (like Wikipedia) and will be made available to the community in form of database dumps or an API (&lt;strong&gt;open data&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;We use two different types of content sites in our system: Papers and Discussions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Paper sites.&lt;/strong&gt; A paper site is dedicated to a single publication. And has the following features:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Paper meta information
+    &lt;ul&gt;
+      &lt;li&gt;show title, author, abstract, journal, tags&lt;/li&gt;
+      &lt;li&gt;leave a comment&lt;/li&gt;
+      &lt;li&gt;write a review (with wiki option)&lt;/li&gt;
+      &lt;li&gt;vote up/down&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Paper resources
+    &lt;ul&gt;
+      &lt;li&gt;show pdfs, slides, notes, video lectures, etc.&lt;/li&gt;
+      &lt;li&gt;add a resource&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Related Work
+    &lt;ul&gt;
+      &lt;li&gt;show the reference-tree and citations in an intelligent way.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Discussions:
+    &lt;ul&gt;
+      &lt;li&gt;show related discussions&lt;/li&gt;
+      &lt;li&gt;start a new discussion&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Social features
+    &lt;ul&gt;
+      &lt;li&gt;bookmark&lt;/li&gt;
+      &lt;li&gt;share on G+, twitter&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The point “Related Work” deserves some further explanation. The citation graph offers a great deal more information than just a list of references. Together with the user generated content like votes and the individual paper bookmarks and social graph one has a very interesting data set which can be harvested. We want to offer at this point at least a filtering option with respect to: popularity, topics, read by friends. Later on, we want to add more sophisticated, even graphical, views on this graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Discussion sites.&lt;/strong&gt; A discussion looks more like a traditional QA-question, with the difference, that each discussion may have (many) related papers. A discussion site contains:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Discussion meta information (title, author, body)&lt;/li&gt;
+  &lt;li&gt;Discussion content&lt;/li&gt;
+  &lt;li&gt;Related papers&lt;/li&gt;
+  &lt;li&gt;Voting&lt;/li&gt;
+  &lt;li&gt;Follow/Bookmark&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Besides the content sides we want to provide the following features:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;News Stream.&lt;/strong&gt; This is the start page of our website. It will be generated from the network consisting of friends, papers and authors. There should be several modes like:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;hot: heavily discussed papers/discussions&lt;/li&gt;
+  &lt;li&gt;new papers: list new publications (filtered by tag, like arXiv feed)&lt;/li&gt;
+  &lt;li&gt;social: What did your friends do lately&lt;/li&gt;
+  &lt;li&gt;default: intelligent mix of recent activity that is relevant to the logged in user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Moreover, filter by tag should be always available.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Search bar:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Searches contents of the site, but should also find papers on freely available databases (e.g. arXiv). Adding a paper should be very seamless process from there.&lt;/li&gt;
+  &lt;li&gt;Search result ranking uses vote and view information.&lt;/li&gt;
+  &lt;li&gt;Personalized search information. (Physicists usually do not want sociology results.)&lt;/li&gt;
+  &lt;li&gt;Auto completion on paper titles, author, discussions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Social:&lt;/strong&gt; (hard to implement, maybe for second version!)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Easily refer to users by @-syntax familiar from Twitter/Google+&lt;/li&gt;
+  &lt;li&gt;Maintain a friendship / trust graph&lt;/li&gt;
+  &lt;li&gt;Friendship recommendations&lt;/li&gt;
+  &lt;li&gt;Find friends from Google+ on the site&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;benefits&quot;&gt;Benefits&lt;/h2&gt;
+
+&lt;p&gt;Our proposed websites improves the above mentioned problems in the following ways.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finding and filtering new publications: This step can be improved with even very little  community effort:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Tell other people, that you are interested in the paper. Vote it up or leave a comment if you are very excited about it.&lt;/li&gt;
+      &lt;li&gt;Point out a paper to a colleague.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Getting more information about a given paper:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Write a summary or review about a paper you have read or skimmed through. Maybe the introduction is hard to read or some results are not clearly stated.&lt;/li&gt;
+      &lt;li&gt;Can you recommend reading this paper? Vote it up!&lt;/li&gt;
+      &lt;li&gt;Ask a colleague for his opinion on the paper. Maybe he can write a summary?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Many reviews of new papers are already written. E.g. MathSciNet and Zentralblatt maintain a large database of Reviews which are provided by the community and are not freely available. Many authors would be much more happy to write them to an open system!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Understanding a paper:&lt;/strong&gt; Here are the &lt;strong&gt;mayor synergies&lt;/strong&gt; which we want to address with our project.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Ask a question.&lt;/strong&gt; Why is the author using this experimental method? How does Lemma 3.4 work? Why do I need this assumption? What is the intiution behind the “virtual truncation”? What implications does this work have?&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Start a discussion.&lt;/strong&gt; (might involve more than one paper.) What is the difference of these two papers? Is there a reference explaining this more clearly? What should I read in advance to understand the theory?&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Add resources.&lt;/strong&gt; Tell the community about related videos, notes, books etc. which are available on other sites.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Share your notes.&lt;/strong&gt; If you have discussed a paper in a reading class or seminar. Collect your notes or opinions and make them available for the community.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Restate interesting statements.&lt;/strong&gt; Tell the community when you have found a helpful result which is buried inside the paper. In that way Google may find it!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finding related work. Having a well structured and easily navigable view on related papers simplifies the search a lot. The filtering benefits from the content generated by the users (votes) and individual information, like friends who have written/bookmarked a paper.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;similar-sites-on-the-web&quot;&gt;Similar Sites on the Web&lt;/h2&gt;
+
+&lt;p&gt;There are several discussions in QA forum which are discussing precisely this problem:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Quora.com: &lt;a href=&quot;http://www.quora.com/What-are-some-websites-where-one-can-post-commentary-and-reviews-of-academic-papers&quot;&gt;Where can I comment on sci papers?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;MathOverflow: &lt;a href=&quot;http://mathoverflow.net/questions/51056/are-there-any-good-websites-for-hosting-discussions-of-mathematical-papers&quot;&gt;Good websites for discussions of mathematical papers?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;MathOverflow: &lt;a href=&quot;http://mathoverflow.net/questions/13619/is-a-free-alternative-to-mathscinet-possible&quot;&gt;Is a free alternative to MathSciNet possible?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;MathOverflow: &lt;a href=&quot;http://mathoverflow.net/questions/3038/errata-database&quot;&gt;Errata-Database&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We found three sites on the internet which follow a similar approach which we examined more carefully.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;There is a social network which has most of our features implemented:
+ &lt;a href=&quot;http://www.researchgate.net/&quot;&gt;researchgate.net&lt;/a&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Connect with researchers, make your work visible, and stay current.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The Economist has dedicated an &lt;a href=&quot;http://www.economist.com/node/21547218&quot;&gt;article&lt;/a&gt; to them. It is essentially a facebook clone, with special features for scientist.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Large, fast growing community. 1.4m +50.000/m. Mainly Biology and Medicine.
+(As Daniel Mietchen points out, the size might be misleading due to institutional accounts)&lt;/li&gt;
+  &lt;li&gt;Very professional Look and Feel. Company from Berlin, Germany, funded by VC. (48 People involved, 10 Jobs advertised)&lt;/li&gt;
+  &lt;li&gt;Huge Feature set:
+    &lt;ul&gt;
+      &lt;li&gt;Profile site, Connect to friends&lt;/li&gt;
+      &lt;li&gt;News Feed&lt;/li&gt;
+      &lt;li&gt;Publication Database, Conference Finder, Jobmarket&lt;/li&gt;
+      &lt;li&gt;Every Paper its own page: with&lt;/li&gt;
+      &lt;li&gt;Voting up/down&lt;/li&gt;
+      &lt;li&gt;Comments&lt;/li&gt;
+      &lt;li&gt;Metadata (Title, Author, Abstract, Preveiw)&lt;/li&gt;
+      &lt;li&gt;Social Media (Share, Bookmark, Follow author)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Organize Workgroups/Reading Classes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Differences to our approach:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Closed Data / Closed Source&lt;/li&gt;
+  &lt;li&gt;Very complex site which solves a lot of purposes&lt;/li&gt;
+  &lt;li&gt;Only very basic features on paper site: vote/comment.&lt;/li&gt;
+  &lt;li&gt;QA system is not linked well to paper database&lt;/li&gt;
+  &lt;li&gt;No MathML&lt;/li&gt;
+  &lt;li&gt;Mainly populated by undergraduates&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Another website which comes reasonably close is:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.sciweavers.org/&quot;&gt;sciweavers.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;an academic network that aggregates links to research paper preprints
+then categorizes them into proceedings.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Includes a large collection of online tools for various purposes&lt;/li&gt;
+  &lt;li&gt;Have a big library of papers/software/datasets/conferences for computer science.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Paper sites have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Meta information and preview&lt;/li&gt;
+  &lt;li&gt;Vote functionality and view statistics, tags&lt;/li&gt;
+  &lt;li&gt;Comments&lt;/li&gt;
+  &lt;li&gt;Related work&lt;/li&gt;
+  &lt;li&gt;Bookmarking&lt;/li&gt;
+  &lt;li&gt;Author information&lt;/li&gt;
+  &lt;li&gt;User profiles (no friendships)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Differences to our approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Focus on computer science community&lt;/li&gt;
+  &lt;li&gt;Comment and Discussions are well hidden on paper sites&lt;/li&gt;
+  &lt;li&gt;No News stream&lt;/li&gt;
+  &lt;li&gt;Very spacious design&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Another very similar site is:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://journalfire.com/&quot;&gt;journalfire.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Share what your read – connect to colleagues – create journal clubs.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It has the following features:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Comment on Papers. Activity feed (?). Follow articles.&lt;/li&gt;
+  &lt;li&gt;Host Journal Clubs. Create Events related to papers.&lt;/li&gt;
+  &lt;li&gt;Powerful search box fetching papers from Arxiv and Pubmed (slow)&lt;/li&gt;
+  &lt;li&gt;Social features on site: User profiles, friend finder (no fb/g+ integration yet)&lt;/li&gt;
+  &lt;li&gt;News feed – from subscribed papers and friends&lt;/li&gt;
+  &lt;li&gt;Easy paper import via Bookmarklet&lt;/li&gt;
+  &lt;li&gt;Good usability!! (but slow loading times)&lt;/li&gt;
+  &lt;li&gt;Private reading clubs cost money!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;They are very skilled: Maintained by 3 PhD students/postdocs from Caltec and MIT.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Differences to our approach:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Closed Data, Closed Source&lt;/li&gt;
+  &lt;li&gt;Also this site misses (currently) misses out ranking features&lt;/li&gt;
+  &lt;li&gt;Very Closed model – Signup required&lt;/li&gt;
+  &lt;li&gt;Weak Crowd sourcing: Cannot add Meta information&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The site is still at its very beginning with little users. The project started in 2010 and did not gain much momentum since.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;THE OTHER SITES ARE ROUGHLY CLASSIFIED IN THE FOLLOWING CATEGORIES:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Single people who are following a very similar idea:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://annotatr.appspot.com/&quot;&gt;annotatr.appspot.com.&lt;/a&gt; Combines a metadata-base with the disqus plugin. You can comment but not rate. Good usability. Nice CSS. Good search function. No MathML. No related article suggestion. Maintained by two academics in private time. Hosted on Google Apps. Closed Source – Closed Data.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.math.ntnu.no/~stacey/Vanilla/rForum/comments.php?DiscussionID=1&amp;amp;page=1#Item_0&quot;&gt;r-Forum&lt;/a&gt; - a resource where mathematicians can collect record reviews, corrections of a resource (e.g. paper, talk, …). A simple Vanilla-Forum/Wiki with almost no content used by maybe 12 people in US. No automated Data import. No rating system.
+&lt;a href=&quot;http://math-arch.org/&quot;&gt;http://math-arch.org/&lt;/a&gt; - Post comments to math papers. very bad usability – get even errors. Maintained by a group of russian programmers LogicSun. Closed Source – Closed Data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Analysis: Although the principal idea to connect people reading papers is there. The implementation is very bad in terms of usability and even basic programming. Also the voting features are missed out.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. (Semi) Professional sites.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.plosone.org/&quot;&gt;Public Libary of Science&lt;/a&gt; very professional, huge paper data base for mainly biology, medicine. Features full text papers, lots of interesting meta information including references. Has comment features (not very visible) and news stream on the start page.
+No QA features (+1, Ask question) on the site. Only published articles are on the site.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.mendeley.com/&quot;&gt;Mendeley.com&lt;/a&gt; - Huge Bibliographic database with bookmarking and social features. You can organize reading groups in there, with comments and notes shared among the participants. Features a news stream with papers by friends. Nice import. Impressive fulltext data and Reference features.
+No QA features for paper. No comments for paper. Requires Signup to do anything useful.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.papercritic.com/mendeley-pub/70404420-b5cc-11df-a52e-0024e8453de6&quot;&gt;papercritic.com&lt;/a&gt; - Open review database. Connected to Mendely bibliographic libary. You can post reviews.
+No rating. No comments. Not open: Mendely is commercial.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://apps.webofknowledge.com/&quot;&gt;webofknowledge.com.&lt;/a&gt; Commercial academic citation index.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.zotero.org/&quot;&gt;zotero.org&lt;/a&gt; - features programm that runs inside a browser. “easy-to-use tool to help you collect, organize, cite, and share your research sources”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Analysis: The goal of all these tools is to simplify the reference management, by providing metadata like references, citations, abstracts, author profiles. Commenting features on the paper site are not there or not promoted.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Vaguely related sites which solve different problems:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.citeulike.org/&quot;&gt;citeulike.org&lt;/a&gt; - Social bookmarking for papers. Closed Source – Open Data.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.scholarpedia.org/&quot;&gt;http://www.scholarpedia.org.&lt;/a&gt; A peer reviewed open access encyclopedia.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.philica.com/&quot;&gt;Philica.com&lt;/a&gt; Online Journal which publishes articles from any field along with its reviews.&lt;/li&gt;
+  &lt;li&gt;MathSciNet/Zentralblatt – Review database for math community. Closed Source – Commercial.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://f1000research.com/&quot;&gt;http://f1000research.com/&lt;/a&gt; - Online Journal with a public, post publish review process. “Open Science – Open Data – Open Review”&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://altmetrics.org/manifesto/&quot;&gt;http://altmetrics.org/manifesto/&lt;/a&gt; as an emerging trend from the web-science trust community. Their goal is to revolutionize the review process and create better filters for scientific publications making use of link structures and public discussions. (Might be interesting for us).&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://meta.wikimedia.org/wiki/WikiScholar&quot;&gt;http://meta.wikimedia.org/wiki/WikiScholar&lt;/a&gt; - one of several ideas under discussion at Wikimedia as to a central repository for references (that are cited on Wikipedias and other Wikimedia projects)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Upshot of all this:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;There is not a single site featuring good Q&amp;amp;A features for papers.&lt;/strong&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">by Heinrich Hartmann and Rene Pickhardt Abstract We propose to create a new website for the scientific community which brings together people which are reading the same paper. The basic idea is to mix the functionality of a Q&amp;amp;A platform (like MathOverflow) with a paper database (like arXiv). We follow a strict openness principle by making available the source code and the data we collect. We start with an analysis how the internet is currently used in different fields and explain the shortcomings. The actual product description can be found under the section “Basic idea”. At the end we present an overview over the websites which follow a similar approach. This document – as well as the whole project – is work in progress. We are happy about any kind of comments or other contributions. The distribution of scientific knowledge Every scientist has to stay up to date with the developments in his area of research. The basic sources for finding new information are: Conferences Research Seminars Journals Preprint-servers (arXiv) Review Databases (MathSciNet, Zentralblatt, …) Q&amp;amp;A Sites (MathOverflow, StackOverflow, …) Blogs Social Networks (Twitter, Google+) Bibliograhpic Databases (Mendeley, nNode, Medline, etc. ) Every community has found its very own way of how to use these tools. Mathematics by Heinrich Hartmann - Oxford: To stay up to date with recent developments I check arxiv.org on a daily basis (RSS feed) participate in mathoverflow.net and search for papers over Google Scholar or MathSciNet. Occasionally interesting work is shared by people in my Google+ circles. In general the speed of pure mathematics is very slow. New research often builds upon work which has been out for a few years. To stay reasonably up to date it is enough to go to conferences every 3-5 months. I read many papers by myself because I am the only one at the department who does research on that particular topic. We have a reading class where we read papers/lecture notes which are relevant for more people. Usually they are concerned with introductions to certain kinds of theory. We have weekly seminars where people talk about their recently published work. There are some very active blogs by famous mathematicians, but in my area blogs play virtually no role. Computer Science by René Pickhardt - Uni Koblenz In Computer Science topics are evolving but also changing very quickly. It is always important to have both an overview of upcoming technologies (which you get from tech blogs) as well as access to current research trends. Since the speed in computer science is so fast and the review process in Journals often takes much time our main source of information and papers are conferences and twitter. Usually conference papers are distributed digitally to participants. If one is interested in those papers google queries like “conference name year papers” are frequently used. Sites like http://www.sciweavers.org/ host and aggregate preprints of papers and organize them by conference. The general method to follow a conference that one is not attending is to follow the hashtag of the conference on Twitter. In general Twitter is the most used tool to share distribute and find information not only for papers but also for the above mentioned news about upcoming technologies. Another rich source for computer scientists is, of course, the related work of papers and google scholar. Especially useful is the method of finding a very influential paper with more than 1000 citations and find newer papers that quote this paper containing a certain keyword which is one of the features of google scholar. The main problem in computer science is not to find a rare paper or idea but rather to filter the huge amount of publications and also bad publications and also keepto fil track of trends. In this way a system that ranks and summarize papers (not only by abstract and citation counts) would help me a lot to select what related work of a paper I should read! Psychology by Elisa Scheller - Uni Freiburg As a psychologist/neuroscientist, I receive recommendations for scientific papers via google scholar alerts or science direct alerts (http://www.sciencedirect.com/); I receive alerts regarding keywords or regarding entire journal issues. When I search for a certain publication, I use pubmed.org or scholar.google.com. This can sometimes be kind of annoying, as I receive multiple alerts from different sources; but I guess it is the best way to stay up to date regarding recent developments. This is especially important in my field, as we feel a big amount of “publication pressure”; I work on a method which is considered as “quite fancy” at the moment, so I also use the alerts to make sure nobody has published “my” experiment yet. Sometimes a facebook friend recommends a certain publication or a colleague points me to it. Most of the time, I read articles on my own, as I am the only person working on this specific topic at my institution. Additionally, we have a weekly journal club where everyone in turn presents work which is related to our focus of research, e.g. a certain part of the human brain. There is also a weekly seminar dedicated to presentations about ongoing projects. Blogs (e.g. mindhacks.com, http://neuroskeptic.blogspot.com/) can be a source to get an overview about recent developments, but I have to admit I use them mainly for work-related entertainment. All in all, it is easy to stay up to date using alerts from different platforms; the annoying part of it is the flood of emails you receive and that you are quite often alerted to articles that don’t fit your interests (no matter how exact you try to specify your keywords). Biomedical Research by Johanna Goldmann - MIT In the biological sciences, in research at the bench – communication is one of the most fundamental tools a scientist can have. Communication with other scientist may open up the possibilities of new collaborations, can lead to a completely new view point of a known question, the integration and expansion of methods as well as allowing a scientist to have a good understanding of what is known, what is not known and what other people have – both successfully and unsuccessfully – tried to investigate. Yet communication is something that is currently very much lacking in academic science – lacking to the extent that most scientist will agree hinders the progress of research. Nonetheless the lack of communication and the issues it brings with it is something that most scientists will have accepted as a necessary evil – not knowing how to possibly change it. Progress is only reported in peer-reviewed journals – many which are greatly affected not only but what is currently “sexy” in research but also by politics and connections and the “publish or perish” pressure. Due to the amount of this pressure in publishing in journals and the amount of weight the list of your publications will have upon any young scientists chances of success, scientist tend also to be very reluctant in sharing any information pre-publication. Furthermore one of the major issues is that currently there really is no way of publishing or communicating either negative results or minor findings, which causes may questions or methods to be repeatedly investigated as well as a loss of information. Given how much social networks and the internet has changed communication as well as the access to information over the past years – there is a need for this change to affect research and communication in the life science and transform the way we think not only about solving and approaching research questions we gather but the information and insights we gain as a whole. Philosophy by Sascha Benjamin Fink - Uni Osnabrück The most important source of information for philosophers is http://philpapers.org/. You can follow trends going on in your field of interest. Philpapers has a list of almost all papers together with their abstracts, keywords and categories as well as a link to the publisher. Additional information about similar papers is displayed. Every category of papers is managed by some editor. For each category it is possible to subscribe to a newsletter. In this way once per month I will be informed about current publications in journals related to my topic of interest. Every User is able to create an account and manage his literature and the papers of his he is interested in. Other research and information exchange methods among philosophers consist of mailing lists, reading clubs and Blogs. Have a look at David Chalmers blog list. Blogs are also becoming more and more important. Unfortunately they are usually on general topics and discussing developments of the community (e.g. Leiter’s Blog, Chalmers’ Blog and Schwitzgebel’s Blog). But all together I still think that for me a centralized service like Philpapers is my favourite tool because it aggregates most information. If I don’t hear about it on Philpapers usually it is not that important. I think among Philosophers this platform – though incomplete – seems to be the standard for the next couple of years. Biophysics by Daniel Mietchen – Uni Jena There is no one-stop shop for biophysicists in terms of keeping abreast of developments in the field. Much of the research is of a methodological nature, and depending on where people in a given subfield tend to publish, that is where to look. I get most of my paper alerts via RSS feeds of saved searches – mostly from HubMed, arXiv, Google Blog search, Mendeley or Twitter – that I import into Friendfeed (examples: brain morphometry, music cognition, evolutionary MRI). In addition to that, I use a set of related Google alerts, I am subscribed to a number of mailing lists, and I heavily filter my emails, again for a similar set of search terms. For broader topics, I am using social networks as a rough filter that is then refined through automated tools like Twitter Times. For events and some overarching topics (like Open Access), I also sometimes follow hashtags in places like Twitter or Google Plus. I am maintaining watchlists at a number of wikis that range from general-purpose sites like Wikipedia, OpenWetWare and Scholarpedia to more specialized environments like Species ID or NMR Wiki, and I am reading part of these via RSS feeds, others via email alerts or regular presence on the wiki. Problems As a scientist it is crucial to be informed about the current developments in the research area. Abstracting from the reports above we divide the tasks roughly into the following stages. Finding and filtering new publications: What is happening right now? What are the current hot topics my area? What are current trends? (→ Check arXiv/Twitter) Did a friend of mine write something? Did a “big shot” write something? (→ Check meta information: title, authors) Are my colleagues excited about a new development? (→ Talk to them.) Getting more information about a given paper: What is actually done in a given paper? Is it relevant for me? Is it really new? Is it a breakthrough? (→ Read abstracts. Find a good readable summary/review.) Judge the quality of a paper: Is it correct? Is it well written? ( → Where is it published, if at all? Skim through content.) Finally there is a fundamental decision: Shall I read the whole paper, or not? which leads us to the next task. Understanding a paper: Understanding a paper in depth can be a very time consuming and tedious process. The presentation is often very short and much knowledge is assumed from the reader. The notation choices can be bad, so that even the statements are hard to understand. In effect the paper is easily readable only for a very small circle of specialist in the area. If one is not in the lucky situation to belong to that circle, one usually applies the following strategies: Lookup references. This forces you to process a whole tree of older papers which might be hard to read, and hard to get hold of. Sometimes it is worthwhile to consult a textbook to polish up fundamentals. Finding additional resources. Is there a review? Is there a related video lecture or slides explaining the material in more detail? Is the author going to a conference in the near future, or even giving a seminar in the area? Join forces. Find people thinking about the same paper: Has somebody at my department already read the paper, so that I can ask some questions? Is there enough interest to make a reading group, or more formally, run a seminar about that paper. Contact the author. This a last resort. If you have struggled with understanding the paper for a very long time and really need/want to get it, you might eventually write an email to the author – who might respond, or not. Sometimes even errors are found! – and not published! An indeed, there is no easy way to publish “errata” anywhere on the net. In mathematics most papers are not getting read though the end. One uses strategies 1 &amp;amp; 2 till one gets stuck and moves on to something more exciting. The chances of survival are much better with strategy 3 where one is committed putting a lot of effort in it over weeks. Finding related work. Where to go from there? Is the paper superseded by a more recent development? Which are the relevant papers which the author builds upon? What are the historic influences? What are the founding ideas of the subject? Finding related work is very time consuming. It is easy to overlook things given that the references are often vast, and sometimes hard to get hold of. Getting information over citations requires often access to commercial databases. Basic idea: All researchers around the world are faced with the same problems and come up with their individual solutions. There are great synergies in bringing these people together with an online platform! Most of the addressed problems are solved with a paper centric service which allows you to… get to know other readers of the paper. exchange with the other readers: ask questions, write comments, reviews. share the gained insights with the community. ask questions about the paper. discuss the paper. review the paper. We want to do that with a new mixture of a traditional Q&amp;amp;A system like StackExchange or MathOverflow with a paper database and social features. The key features of this system are as follows: Openness: We follow a strict openness principle. The software will be developed in open source. All data generated on this site will be under a creative commons license (like Wikipedia) and will be made available to the community in form of database dumps or an API (open data). We use two different types of content sites in our system: Papers and Discussions. Paper sites. A paper site is dedicated to a single publication. And has the following features: Paper meta information show title, author, abstract, journal, tags leave a comment write a review (with wiki option) vote up/down Paper resources show pdfs, slides, notes, video lectures, etc. add a resource Related Work show the reference-tree and citations in an intelligent way. Discussions: show related discussions start a new discussion Social features bookmark share on G+, twitter The point “Related Work” deserves some further explanation. The citation graph offers a great deal more information than just a list of references. Together with the user generated content like votes and the individual paper bookmarks and social graph one has a very interesting data set which can be harvested. We want to offer at this point at least a filtering option with respect to: popularity, topics, read by friends. Later on, we want to add more sophisticated, even graphical, views on this graph. Discussion sites. A discussion looks more like a traditional QA-question, with the difference, that each discussion may have (many) related papers. A discussion site contains: Discussion meta information (title, author, body) Discussion content Related papers Voting Follow/Bookmark Besides the content sides we want to provide the following features: News Stream. This is the start page of our website. It will be generated from the network consisting of friends, papers and authors. There should be several modes like: hot: heavily discussed papers/discussions new papers: list new publications (filtered by tag, like arXiv feed) social: What did your friends do lately default: intelligent mix of recent activity that is relevant to the logged in user Moreover, filter by tag should be always available. Search bar: Searches contents of the site, but should also find papers on freely available databases (e.g. arXiv). Adding a paper should be very seamless process from there. Search result ranking uses vote and view information. Personalized search information. (Physicists usually do not want sociology results.) Auto completion on paper titles, author, discussions. Social: (hard to implement, maybe for second version!) Easily refer to users by @-syntax familiar from Twitter/Google+ Maintain a friendship / trust graph Friendship recommendations Find friends from Google+ on the site Benefits Our proposed websites improves the above mentioned problems in the following ways. Finding and filtering new publications: This step can be improved with even very little community effort: Tell other people, that you are interested in the paper. Vote it up or leave a comment if you are very excited about it. Point out a paper to a colleague. Getting more information about a given paper: Write a summary or review about a paper you have read or skimmed through. Maybe the introduction is hard to read or some results are not clearly stated. Can you recommend reading this paper? Vote it up! Ask a colleague for his opinion on the paper. Maybe he can write a summary? Many reviews of new papers are already written. E.g. MathSciNet and Zentralblatt maintain a large database of Reviews which are provided by the community and are not freely available. Many authors would be much more happy to write them to an open system! Understanding a paper: Here are the mayor synergies which we want to address with our project. Ask a question. Why is the author using this experimental method? How does Lemma 3.4 work? Why do I need this assumption? What is the intiution behind the “virtual truncation”? What implications does this work have? Start a discussion. (might involve more than one paper.) What is the difference of these two papers? Is there a reference explaining this more clearly? What should I read in advance to understand the theory? Add resources. Tell the community about related videos, notes, books etc. which are available on other sites. Share your notes. If you have discussed a paper in a reading class or seminar. Collect your notes or opinions and make them available for the community. Restate interesting statements. Tell the community when you have found a helpful result which is buried inside the paper. In that way Google may find it! Finding related work. Having a well structured and easily navigable view on related papers simplifies the search a lot. The filtering benefits from the content generated by the users (votes) and individual information, like friends who have written/bookmarked a paper. Similar Sites on the Web There are several discussions in QA forum which are discussing precisely this problem: Quora.com: Where can I comment on sci papers? MathOverflow: Good websites for discussions of mathematical papers? MathOverflow: Is a free alternative to MathSciNet possible? MathOverflow: Errata-Database We found three sites on the internet which follow a similar approach which we examined more carefully. There is a social network which has most of our features implemented: researchgate.net Connect with researchers, make your work visible, and stay current. The Economist has dedicated an article to them. It is essentially a facebook clone, with special features for scientist. Large, fast growing community. 1.4m +50.000/m. Mainly Biology and Medicine. (As Daniel Mietchen points out, the size might be misleading due to institutional accounts) Very professional Look and Feel. Company from Berlin, Germany, funded by VC. (48 People involved, 10 Jobs advertised) Huge Feature set: Profile site, Connect to friends News Feed Publication Database, Conference Finder, Jobmarket Every Paper its own page: with Voting up/down Comments Metadata (Title, Author, Abstract, Preveiw) Social Media (Share, Bookmark, Follow author) Organize Workgroups/Reading Classes. Differences to our approach: Closed Data / Closed Source Very complex site which solves a lot of purposes Only very basic features on paper site: vote/comment. QA system is not linked well to paper database No MathML Mainly populated by undergraduates Another website which comes reasonably close is: sciweavers.org an academic network that aggregates links to research paper preprints then categorizes them into proceedings. Includes a large collection of online tools for various purposes Have a big library of papers/software/datasets/conferences for computer science. Paper sites have: Meta information and preview Vote functionality and view statistics, tags Comments Related work Bookmarking Author information User profiles (no friendships) Differences to our approach: Focus on computer science community Comment and Discussions are well hidden on paper sites No News stream Very spacious design Another very similar site is: journalfire.com “Share what your read – connect to colleagues – create journal clubs.” It has the following features: Comment on Papers. Activity feed (?). Follow articles. Host Journal Clubs. Create Events related to papers. Powerful search box fetching papers from Arxiv and Pubmed (slow) Social features on site: User profiles, friend finder (no fb/g+ integration yet) News feed – from subscribed papers and friends Easy paper import via Bookmarklet Good usability!! (but slow loading times) Private reading clubs cost money! They are very skilled: Maintained by 3 PhD students/postdocs from Caltec and MIT. Differences to our approach: Closed Data, Closed Source Also this site misses (currently) misses out ranking features Very Closed model – Signup required Weak Crowd sourcing: Cannot add Meta information The site is still at its very beginning with little users. The project started in 2010 and did not gain much momentum since. THE OTHER SITES ARE ROUGHLY CLASSIFIED IN THE FOLLOWING CATEGORIES: 1. Single people who are following a very similar idea: annotatr.appspot.com. Combines a metadata-base with the disqus plugin. You can comment but not rate. Good usability. Nice CSS. Good search function. No MathML. No related article suggestion. Maintained by two academics in private time. Hosted on Google Apps. Closed Source – Closed Data. r-Forum - a resource where mathematicians can collect record reviews, corrections of a resource (e.g. paper, talk, …). A simple Vanilla-Forum/Wiki with almost no content used by maybe 12 people in US. No automated Data import. No rating system. http://math-arch.org/ - Post comments to math papers. very bad usability – get even errors. Maintained by a group of russian programmers LogicSun. Closed Source – Closed Data. Analysis: Although the principal idea to connect people reading papers is there. The implementation is very bad in terms of usability and even basic programming. Also the voting features are missed out. 2. (Semi) Professional sites. Public Libary of Science very professional, huge paper data base for mainly biology, medicine. Features full text papers, lots of interesting meta information including references. Has comment features (not very visible) and news stream on the start page. No QA features (+1, Ask question) on the site. Only published articles are on the site. Mendeley.com - Huge Bibliographic database with bookmarking and social features. You can organize reading groups in there, with comments and notes shared among the participants. Features a news stream with papers by friends. Nice import. Impressive fulltext data and Reference features. No QA features for paper. No comments for paper. Requires Signup to do anything useful. papercritic.com - Open review database. Connected to Mendely bibliographic libary. You can post reviews. No rating. No comments. Not open: Mendely is commercial. webofknowledge.com. Commercial academic citation index. zotero.org - features programm that runs inside a browser. “easy-to-use tool to help you collect, organize, cite, and share your research sources” Analysis: The goal of all these tools is to simplify the reference management, by providing metadata like references, citations, abstracts, author profiles. Commenting features on the paper site are not there or not promoted. 3. Vaguely related sites which solve different problems: citeulike.org - Social bookmarking for papers. Closed Source – Open Data. http://www.scholarpedia.org. A peer reviewed open access encyclopedia. Philica.com Online Journal which publishes articles from any field along with its reviews. MathSciNet/Zentralblatt – Review database for math community. Closed Source – Commercial. http://f1000research.com/ - Online Journal with a public, post publish review process. “Open Science – Open Data – Open Review” http://altmetrics.org/manifesto/ as an emerging trend from the web-science trust community. Their goal is to revolutionize the review process and create better filters for scientific publications making use of link structures and public discussions. (Might be interesting for us). http://meta.wikimedia.org/wiki/WikiScholar - one of several ideas under discussion at Wikimedia as to a central repository for references (that are cited on Wikipedias and other Wikimedia projects) Upshot of all this: There is not a single site featuring good Q&amp;amp;A features for papers.</summary></entry></feed>
