@@ -7,6 +7,8 @@ install:
 	install -m 0644 -o root -g root htdocs/no_preview/* -D -t /usr/local/openresty/nginx/html/no_preview || true
 	install -m 0644 -o root -g root htdocs/datasets/* -D -t /usr/local/openresty/nginx/html/datasets || true
 	install -m 0644 -o root -g root htdocs/blog/* -D -t /usr/local/openresty/nginx/html/blog || true
+	cp -rf htdocs/blog/* /usr/local/openresty/nginx/html/blog
+	chmod -R 644 /usr/local/openresty/nginx/html/blog/*
 	install -m 0644 -o root -g root htdocs/* -D -t /usr/local/openresty/nginx/html || true
 
 restart:
