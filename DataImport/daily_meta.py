@@ -23,6 +23,7 @@ if __name__ == '__main__':
             data = json.load(meta_file)
             for entry in data:
                 fetch_arxiv_pdf(entry[0])
+                time.sleep(10)
     elif arg == "download_source":
         source_dest = "/EXCITE/datasets/arxiv/source_daily/" + today
         if not os.path.isdir(source_dest):

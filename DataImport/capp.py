@@ -104,7 +104,7 @@ def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
         print("PDF exists")
         return
     url = "https://arxiv.org/pdf/" + arxiv_id + ".pdf"
-    command = 'wget -S --user-agent=Chrome/60.0.3112.90 "{}" -P {} 2>&1'.format(url, target)
+    command = 'wget -S --user-agent=Wget "{}" -P {} 2>&1'.format(url, target)
     for i in range(0,10):
         result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
         result = result.stdout.decode('utf-8')
