@@ -103,8 +103,9 @@ def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
     if os.path.exists(target + '/' + arxiv_id + '.pdf'):
         print("PDF exists")
         return
+    time.sleep(10)
     url = "https://arxiv.org/pdf/" + arxiv_id + ".pdf"
-    command = 'wget -S --user-agent=Wget "{}" -P {} 2>&1'.format(url, target)
+    command = 'wget -S -U "EXCITE SQUID-Proxy dkeske@uni-koblenz.de" "{}" -P {} 2>&1'.format(url, target)
     for i in range(0,10):
         result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
         result = result.stdout.decode('utf-8')
@@ -112,6 +113,7 @@ def fetch_arxiv_pdf(arxiv_id, target="/EXCITE/datasets/arxiv/pdf_daily"):
             print(result)
             time.sleep(i*10)
         elif "200 OK" in result:
+            print(arxiv_id + " OK")
             break
         else:
             print(result)
@@ -122,14 +124,20 @@ def fetch_arxiv_source(arxiv_id, target="/EXCITE/datasets/arxiv/source_daily"):
     if os.path.exists(target + '/' + arxiv_id):
         print("Source exists")
         return
+    time.sleep(10)
     url = "https://arxiv.org/e-print/" + arxiv_id
-    command = 'wget -S --user-agent=Lynx "{}" -P {} 2>&1 | grep "HTTP/" | awk \'{{print $2}}\''.format(url, target)
+    command = 'wget -S -U "EXCITE SQUID-Proxy dkeske@uni-koblenz.de" "{}" -P {} 2>&1 '.format(url, target)
     for i in range(0,10):
         result = subprocess.run(command, stdout=subprocess.PIPE, shell=True)
-        if result.stdout.decode('utf-8').startswith("403"):
+        result = result.stdout.decode('utf-8')
+        if "403 Forbidden" in result:
+            print(result)
             time.sleep(i*10)
-        else:
+        elif "200 OK" in result:
+            print(arxiv_id + " OK")
             break
+        else:
+            print(result)
 
 
 # Extract Buckets

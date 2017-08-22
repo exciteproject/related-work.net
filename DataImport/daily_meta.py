@@ -19,11 +19,13 @@ if __name__ == '__main__':
         # year = today.split("-")[0]
         print(insert_arxiv_meta_bucket(today, src_file=file_loc))
     elif arg == "download_pdf":
+        source_dest = "/EXCITE/datasets/arxiv/pdf_daily/" + today
+        if not os.path.isdir(source_dest):
+            os.mkdir(source_dest)
         with open(file_loc + today) as meta_file:
             data = json.load(meta_file)
             for entry in data:
-                fetch_arxiv_pdf(entry[0])
-                time.sleep(10)
+                fetch_arxiv_pdf(entry[0], source_dest)
     elif arg == "download_source":
         source_dest = "/EXCITE/datasets/arxiv/source_daily/" + today
         if not os.path.isdir(source_dest):
