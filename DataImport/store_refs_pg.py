@@ -6,7 +6,7 @@ import psycopg2
 
 SQL_CREATE = """
 CREATE TABLE IF NOT EXISTS refs (
-  ref_id VARCHAR(50) PRIMARY KEY, -- Auto increment field
+  ref_id SERIAL PRIMARY KEY, -- Auto increment field
   meta_id_source VARCHAR(50),  -- Meta id of the paper containing the reference
   ref_text TEXT  -- Reference text
 );
