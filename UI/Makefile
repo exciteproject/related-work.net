@@ -5,6 +5,7 @@ install:
 	install -m 0644 -o root -g root htdocs/ssoar/* -D -t /usr/local/openresty/nginx/html/ssoar || true
 	install -m 0644 -o root -g root htdocs/ssoar-gold/* -D -t /usr/local/openresty/nginx/html/ssoar-gold || true
 	install -m 0644 -o root -g root htdocs/no_preview/* -D -t /usr/local/openresty/nginx/html/no_preview || true
+	install -m 0644 -o root -g root htdocs/compare/* -D -t /usr/local/openresty/nginx/html/compare || true
 	install -m 0644 -o root -g root htdocs/datasets/* -D -t /usr/local/openresty/nginx/html/datasets || true
 	chmod -R 644 /usr/local/openresty/nginx/html/blog/*
 	cp -a htdocs/blog/* /usr/local/openresty/nginx/html/blog
